@@ -1,6 +1,26 @@
 {
   "expo": {
+    "name": "Reciply",
+    "version": "1.0.0",
+    "slug": "reciply",
     "scheme": "acme",
-    "web": { "bundler": "metro" }
+    "web": {
+      "bundler": "metro"
+    },
+    "ios": {
+      "bundleIdentifier": "com.marcoluz.reciplyapp",
+      "buildNumber": "1.2.1"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "faa58e51-a411-4add-a98a-2ecba78d5d8e"
+      }
+    },
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fffff"
+    }
   }
 }
