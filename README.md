@@ -34,7 +34,7 @@
     <img src="https://cdn-icons-png.flaticon.com/512/2276/2276931.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Recipe Application</h3>
+<h3 align="center">Reciply</h3>
 
   <p align="center">
     The best app to prevent food waste
