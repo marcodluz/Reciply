@@ -1,10 +1,21 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import { Redirect, Stack, useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Page() {
   // return <Redirect href={'/home/panel'} />
 
   const router = useRouter();
+
+  // Check if the user is already authenticated
+  AsyncStorage.getItem("userID").then((userID) => {
+    if (userID) {
+      // Navigate to the panel screen
+      router.replace("home");
+
+      console.log(userID);
+    }
+  });
 
   return (
     <View style={styles.container}>

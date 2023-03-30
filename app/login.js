@@ -10,6 +10,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRouter, Stack, Link } from "expo-router";
 import { firebase } from "../firebase";
 import { AntDesign } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const login = () => {
   const router = useRouter();
@@ -17,15 +18,15 @@ const login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        router.replace("home");
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       router.replace("home");
+  //     }
+  //   });
 
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
 
   const emailRef = useRef(null);
 
@@ -37,17 +38,6 @@ const login = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSignUp = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered in with: ", user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-
   const handleLogin = () => {
     firebase
       .auth()
@@ -55,6 +45,12 @@ const login = () => {
       .then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Logged in with: ", user.email);
+
+        // Store the user ID in AsyncStorage
+        AsyncStorage.setItem("userID", user.uid);
+        AsyncStorage.setItem("userEmail", user.email);
+
+        router.replace("home");
       })
       .catch((error) => alert(error.message));
   };
@@ -78,7 +74,7 @@ const login = () => {
               name="back"
               size={24}
               color="white"
-              onPress={() => router.back()}
+              onPress={() => router.push("./")}
             />
           ), // set custom back button icon
         }}

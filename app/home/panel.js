@@ -6,10 +6,11 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import React, { useState, useRef, useEffect, memo } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "expo-router";
 import { firebase } from "../../firebase";
 import { FontAwesome } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const panel = () => {
   // UI References
@@ -18,7 +19,25 @@ const panel = () => {
   const buttonRefs = useRef([]);
 
   // User References
-  const userId = firebase.auth().currentUser.uid;
+  //const userId = firebase.auth().currentUser.uid;
+
+  // Check if the user is already authenticated
+  AsyncStorage.getItem("userID").then((userID) => {
+    if (userID) {
+      //console.log(userID);
+    }
+  });
+
+  // Define the function that retrieves the saved user ID from AsyncStorage
+  const getSavedUserId = async () => {
+    try {
+      const userId = await AsyncStorage.getItem("userID");
+      return userId;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
 
   // Get the application ingredients
   const [ingredients, setIngredients] = useState([]);
@@ -60,68 +79,94 @@ const panel = () => {
 
   // Get the saved ingredients and show the search button
   const [savedIngredients, setSavedIngredients] = useState([]);
-  const savedIngredientsRef = firebase
-    .firestore()
-    .collection("users")
-    .doc(userId)
-    .collection("saved-ingredients");
   useEffect(() => {
-    const unsubscribe = savedIngredientsRef
-      .orderBy("addedAt", "asc") // add this line to order the saved ingredients by addedAt
-      .onSnapshot((querySnapshot) => {
-        const savedIngredients = [];
-        querySnapshot.forEach((doc) => {
-          const { name, addedAt } = doc.data();
-          savedIngredients.push({
-            id: doc.id,
-            name,
-            addedAt,
+    const getSavedIngredients = async () => {
+      const userId = await getSavedUserId();
+      if (userId) {
+        const savedIngredientsRef = firebase
+          .firestore()
+          .collection("users")
+          .doc(userId)
+          .collection("saved-ingredients");
+
+        const unsubscribe = savedIngredientsRef
+          .orderBy("addedAt", "asc")
+          .onSnapshot((querySnapshot) => {
+            const savedIngredients = [];
+            querySnapshot.forEach((doc) => {
+              const { name, addedAt } = doc.data();
+              savedIngredients.push({
+                id: doc.id,
+                name,
+                addedAt,
+              });
+            });
+            setSavedIngredients(savedIngredients);
+
+            if (savedIngredients.length > 2) {
+              setSubmitButtonVisible(true);
+            } else {
+              setSubmitButtonVisible(false);
+            }
           });
-        });
-        setSavedIngredients(savedIngredients);
 
-        if (savedIngredients.length > 2) {
-          setSubmitButtonVisible(true);
-        } else {
-          setSubmitButtonVisible(false);
-        }
-      });
-
-    return () => {
-      unsubscribe();
+        return () => {
+          unsubscribe();
+        };
+      }
     };
+
+    getSavedIngredients();
   }, []);
 
-  function handleIngredientClick(ingredientId) {
+  const handleIngredientClick = async (ingredientId) => {
     const ingredient = ingredients.find(
       (ingredient) => ingredient.id === ingredientId
     );
     const ingredientName = ingredient.name;
-    savedIngredientsRef
-      .doc(ingredientId)
-      .set({
-        name: ingredientName,
-        addedAt: new Date().toLocaleString(),
-      })
-      .then(() => {
-        console.log("+1 " + ingredientId);
-      })
-      .catch((error) => {
-        console.error("Error adding ingredient:", error);
-      });
+    const userId = await getSavedUserId();
+    if (userId) {
+      const savedIngredientsRef = firebase
+        .firestore()
+        .collection("users")
+        .doc(userId)
+        .collection("saved-ingredients");
+
+      savedIngredientsRef
+        .doc(ingredientId)
+        .set({
+          name: ingredientName,
+          addedAt: new Date().toLocaleString(),
+        })
+        .then(() => {
+          console.log("+1 " + ingredientId);
+        })
+        .catch((error) => {
+          console.error("Error adding ingredient:", error);
+        });
+    }
   }
 
-  function handleRemoveIngredientClick(savedIngredientId) {
-    savedIngredientsRef
-      .doc(savedIngredientId)
-      .delete()
-      .then(() => {
-        console.log("-1 " + savedIngredientId);
-      })
-      .catch((error) => {
-        console.error("Error removing ingredient:", error);
-      });
-  }
+  const handleRemoveIngredientClick = async (savedIngredientId) => {
+    const userId = await getSavedUserId();
+    if (userId) {
+      const savedIngredientsRef = firebase
+        .firestore()
+        .collection("users")
+        .doc(userId)
+        .collection("saved-ingredients");
+
+      savedIngredientsRef
+        .doc(savedIngredientId)
+        .delete()
+        .then(() => {
+          console.log("-1 " + savedIngredientId);
+        })
+        .catch((error) => {
+          console.error("Error removing ingredient:", error);
+        });
+    }
+  };
 
   function IngredientButton({ savedIngredient }) {
     const [ingredientData, setIngredientData] = useState(null);
