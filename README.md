@@ -215,7 +215,7 @@ To get a local copy up and running follow these next steps.
 8. Create an account with spoonacular api on their [official website](https://spoonacular.com/food-api/console)
    > **a.** Navigate to the Profile tab
 
-   > **b.** Copy the API Key into the `secrets.js` file of the project in the variable `spoonacular_api_key`.
+   > **b.** Copy the API Key into the `spoonacular_api_key` variable in the `secrets.js` file located in the root of the project.
 
 9. Start the Expo development server by running the following command:
    `expo start`
