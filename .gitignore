@@ -12,3 +12,7 @@ web-build/
 
 # macOS
 .DS_Store
+
+# Project
+secrets.js
+builds/

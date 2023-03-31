@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 3.8.1",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "production": {
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "marcotdl@hotmail.com",
+        "ascAppId": "6446953227",
+        "appleTeamId": "3NLJS623ND"
+      }
+    }
+  }
+}
