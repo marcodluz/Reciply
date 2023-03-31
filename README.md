@@ -154,15 +154,15 @@ To get a local copy up and running follow these next steps.
 1. Clone the Reciply application repository. You can do this by running the following command in your terminal or command prompt:
    `git clone https://github.com/marcodluz/Reciply`
    > Alternatively you can [download the project](https://github.com/marcodluz/Reciply/archive/refs/heads/main.zip) and unzip it into a folder.
-
+<br>
 
 2. Navigate to the directory where you cloned the repository by running the following command:
    `cd Reciply`
-
+<br>
 
 3. Install the dependencies by running the following command:
    `npm install`
-
+<br>
 
 4. Create a Firebase project in the Firebase console by following these steps:
    **a.** Go to the Firebase [console](https://console.firebase.google.com/).
@@ -172,7 +172,7 @@ To get a local copy up and running follow these next steps.
    **c.** Enter a name for your project and select your country/region.
 
    **d.** Click on "Create Project".
-
+<br>
 
 5. Set up authentication by following these steps:
    **a.** Go to the Firebase console for your project.
@@ -184,7 +184,7 @@ To get a local copy up and running follow these next steps.
    **d.** Choose the authentication method of email and password.
 
    **e.** Follow the instructions to set up authentication.
-
+<br>
 
 6. Set up Cloud Firestore by following these steps:
    **a.** Go to the Firebase console for your project.
@@ -198,7 +198,7 @@ To get a local copy up and running follow these next steps.
    **e.** Choose "Start in test mode" and click on "Enable".
 
    **f.** Your database is now set up and ready to use.
-
+<br>
 
 7. Get the Firebase configuration to your project by following these steps:
    **a.** Go to the Firebase console for your project.
@@ -216,14 +216,14 @@ To get a local copy up and running follow these next steps.
    **g.** Copy the Firebase configuration information (e.g., apiKey, authDomain, databaseURL, etc.) into the correct variables of `secrets-example.js` located in the root of the project.
 
    **h.** Rename the `secrets-example.js` to `secrets.js`
-
+<br>
 
 8. Start the Expo development server by running the following command:
    `expo start`
-
+<br>
 
 9. Open the Expo app on your mobile device (available for iOS and Android) and scan the QR code displayed in your terminal or command prompt.
-
+<br>
 
 10. Wait for the Expo app to load and display your application.
 
