@@ -269,7 +269,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`][license-url] for more information.
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
