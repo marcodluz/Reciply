@@ -80,7 +80,7 @@
 Reciply is an open-source fully customizable recipe platform developed in Expo React Native.
 
   <a href="https://github.com/marcodluz/Reciply">
-    <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5" alt="Available on the App Store" width="500" height="200">
+    <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5" alt="Available on the App Store" width="250" height="100">
   </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
