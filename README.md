@@ -118,11 +118,9 @@ With Reciply, simply input the ingredients you have on hand, and our app will su
 
 Join the movement to reduce food waste and download Reciply today!
 
-<a  href="https://github.com/marcodluz/Reciply">
-
+<!-- <a  href="https://github.com/marcodluz/Reciply">
 <img  src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5"  alt="Available on the App Store"  width="125"  height="50">
-
-</a>
+</a> -->
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
