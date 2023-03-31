@@ -165,13 +165,13 @@ To get a local copy up and running follow these next steps.
 <br>
 
 4. Create a Firebase project in the Firebase console by following these steps:
-   **a.** Go to the Firebase [console](https://console.firebase.google.com/).
+   > **a.** Go to the Firebase [console](https://console.firebase.google.com/).
 
-   **b.** Click on "Add project" or select an existing project.
+   > **b.** Click on "Add project" or select an existing project.
 
-   **c.** Enter a name for your project and select your country/region.
+   > **c.** Enter a name for your project and select your country/region.
 
-   **d.** Click on "Create Project".
+   > **d.** Click on "Create Project".
 <br>
 
 5. Set up authentication by following these steps:
