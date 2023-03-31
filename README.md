@@ -212,12 +212,17 @@ To get a local copy up and running follow these next steps.
 
    > **h.** Rename the `secrets-example.js` to `secrets.js`
 
-8. Start the Expo development server by running the following command:
+8. Create an account with spoonacular api on their [official website](https://spoonacular.com/food-api/console)
+   > **a.** Navigate to the Profile tab
+
+   > **b.** Copy the API Key into the `secrets.js` file of the project in the variable `spoonacular_api_key`.
+
+9. Start the Expo development server by running the following command:
    `expo start`
 
-9. Open the Expo app on your mobile device (available for iOS and Android) and scan the QR code displayed in your terminal or command prompt.
+10. Open the Expo app on your mobile device (available for iOS and Android) and scan the QR code displayed in your terminal or command prompt.
 
-10. Wait for the Expo app to load and display your application.
+11. Wait for the Expo app to load and display your application.
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
