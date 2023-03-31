@@ -177,24 +177,16 @@ To get a local copy up and running follow these simple steps.
 
 3. Install the dependencies by running the following command:
    `npm install`
+   
+4. Create a Firebase project in the Firebase console by following these steps:
 
-<details>
-<summary>4. Create a Firebase project in the Firebase console by following these steps:</summary>
-<ol>
-<li>
-**a.** Go to the Firebase [console](https://console.firebase.google.com/).</li>
-</li>
-<li>
-**b.** Click on "Add project" or select an existing project.</li>
-</li>
-<li>
-**c.** Enter a name for your project and select your country/region.</li>
-</li>
-<li>
-**d.** Click on "Create Project".</li>
-</li>
-</ol>
-</details>
+   **a.** Go to the Firebase [console](https://console.firebase.google.com/).
+
+   **b.** Click on "Add project" or select an existing project.
+
+   **c.** Enter a name for your project and select your country/region.
+
+   **d.** Click on "Create Project".
 
 5. Set up authentication by following these steps:
 
