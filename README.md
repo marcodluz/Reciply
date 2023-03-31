@@ -88,7 +88,7 @@ Reciply is an open-source fully customizable recipe platform developed in Expo R
 ### Built With
 
 - [![React][react.js]][react-url]
-- [![ReactNative]]
+- [![Expo][expo.dev]][expo-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,7 +108,7 @@ To get a local copy up and running follow these simple steps.
 
 <b>Please make sure that all the prerequisites are installed correctly before starting this stage of installing the project.</b>
 
-- <b>Step 1</b> - Download and unzip it into a folder: https://github.com/marcodluz/Reciply/archive/refs/heads/master.zip
+- <b>Step 1</b> - Download and unzip it into a folder: https://github.com/marcodluz/Reciply/archive/refs/heads/main.zip
 
 - <b>Step 2</b> - Open the folder in Visual Studio Code
 
@@ -164,7 +164,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,7 +190,7 @@ Project Link: [https://github.com/marcodluz/Reciply](https://github.com/marcodlu
 [issues-shield]: https://img.shields.io/github/issues/marcodluz/Reciply.svg?style=for-the-badge
 [issues-url]: https://github.com/marcodluz/Reciply/issues
 [license-shield]: https://img.shields.io/github/license/marcodluz/Reciply.svg?style=for-the-badge
-[license-url]: https://github.com/marcodluz/Reciply/blob/master/LICENSE.txt
+[license-url]: https://github.com/marcodluz/Reciply/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcodluz
 [product-screenshot]: images/screenshot.png
@@ -210,3 +210,5 @@ Project Link: [https://github.com/marcodluz/Reciply](https://github.com/marcodlu
 [bootstrap-url]: https://getbootstrap.com
 [jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [jquery-url]: https://jquery.com
+[expo.dev]: https://img.shields.io/badge/React%20Native-20232A&style=for-the-badge&logo=expo&logoColor=white
+[expo-url]: https://expo.dev/
