@@ -210,5 +210,5 @@ Project Link: [https://github.com/marcodluz/Reciply](https://github.com/marcodlu
 [bootstrap-url]: https://getbootstrap.com
 [jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [jquery-url]: https://jquery.com
-[expo.dev]: https://img.shields.io/badge/React%20Native-20232A&style=for-the-badge&logo=expo&logoColor=white
+[expo.dev]: https://img.shields.io/badge/Expo-20232A?style=for-the-badge&logo=expo&logoColor=white
 [expo-url]: https://expo.dev/
