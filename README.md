@@ -33,27 +33,17 @@
 -->
 
 [![Contributors][contributors-shield]][contributors-url]
-
 [![Forks][forks-shield]][forks-url]
-
 [![Stargazers][stars-shield]][stars-url]
-
 [![Issues][issues-shield]][issues-url]
-
 [![MIT License][license-shield]][license-url]
-
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
-
 <br  />
-
 <div align="center">
-
 <a  href="https://github.com/marcodluz/Reciply">
-
 <img  src="https://cdn-icons-png.flaticon.com/512/2276/2276931.png"  alt="Logo"  width="80"  height="80">
-
 </a>
 
 <h3  align="center">Reciply</h3>
@@ -78,7 +68,6 @@ The best app to prevent food waste
 <!-- TABLE OF CONTENTS -->
 
 <details>
-
 <summary>Table of Contents</summary>
 
 <ol>
@@ -118,7 +107,6 @@ The best app to prevent food waste
 <li><a  href="#contact">Contact</a></li>
 
 </ol>
-
 </details>
 
 <!-- ABOUT THE PROJECT -->
@@ -129,7 +117,7 @@ Reciply is an open-source fully customizable recipe platform developed in Expo R
 
 <a  href="https://github.com/marcodluz/Reciply">
 
-<img  src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5"  alt="Available on the App Store"  width="250"  height="100">
+<img  src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5"  alt="Available on the App Store"  width="125"  height="50">
 
 </a>
 
@@ -138,9 +126,7 @@ Reciply is an open-source fully customizable recipe platform developed in Expo R
 ### Built With
 
 [![Visual Studio Code][code.visualstudio.com]][visualstudiocode-url]
-
 [![React][reactnative.dev]][reactnative-url]
-
 [![Expo][expo.dev]][expo-url]
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
@@ -149,16 +135,14 @@ Reciply is an open-source fully customizable recipe platform developed in Expo R
 
 # Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these next steps.
 
 ## Prerequisites
 
 1. Install Git on your computer if you haven't already. You can download it from the official website: [https://git-scm.com/downloads](https://git-scm.com/downloads).
-
    > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 2. Install Node.js and npm on your computer. You can download them from the official website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
-
    > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://nodejs.org/en/download/package-manager).
 
 3. Install the Expo CLI by running the following command in your terminal or command prompt: `npm install -g expo-cli`
@@ -169,17 +153,18 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the Reciply application repository. You can do this by running the following command in your terminal or command prompt:
    `git clone https://github.com/marcodluz/Reciply`
-
    > Alternatively you can [download the project](https://github.com/marcodluz/Reciply/archive/refs/heads/main.zip) and unzip it into a folder.
+
 
 2. Navigate to the directory where you cloned the repository by running the following command:
    `cd Reciply`
 
+
 3. Install the dependencies by running the following command:
    `npm install`
-   
-4. Create a Firebase project in the Firebase console by following these steps:
 
+
+4. Create a Firebase project in the Firebase console by following these steps:
    **a.** Go to the Firebase [console](https://console.firebase.google.com/).
 
    **b.** Click on "Add project" or select an existing project.
@@ -188,8 +173,8 @@ To get a local copy up and running follow these simple steps.
 
    **d.** Click on "Create Project".
 
-5. Set up authentication by following these steps:
 
+5. Set up authentication by following these steps:
    **a.** Go to the Firebase console for your project.
 
    **b.** Click on "Authentication" in the left-hand menu.
@@ -200,8 +185,8 @@ To get a local copy up and running follow these simple steps.
 
    **e.** Follow the instructions to set up authentication.
 
-6. Set up Cloud Firestore by following these steps:
 
+6. Set up Cloud Firestore by following these steps:
    **a.** Go to the Firebase console for your project.
 
    **b.** Click on "Firestore" in the left-hand menu.
@@ -214,8 +199,8 @@ To get a local copy up and running follow these simple steps.
 
    **f.** Your database is now set up and ready to use.
 
-7. Get the Firebase configuration to your project by following these steps:
 
+7. Get the Firebase configuration to your project by following these steps:
    **a.** Go to the Firebase console for your project.
 
    **b.** Click on the "Settings" icon (gear) next to "Project Overview" in the top-left corner of the screen.
@@ -232,10 +217,13 @@ To get a local copy up and running follow these simple steps.
 
    **h.** Rename the `secrets-example.js` to `secrets.js`
 
+
 8. Start the Expo development server by running the following command:
    `expo start`
 
+
 9. Open the Expo app on your mobile device (available for iOS and Android) and scan the QR code displayed in your terminal or command prompt.
+
 
 10. Wait for the Expo app to load and display your application.
 
@@ -246,28 +234,19 @@ To get a local copy up and running follow these simple steps.
 ## Roadmap
 
 - [x] Navigation System
-
-- [x] Firebase Integration
-
-- [x] User Authentication Storage
-
-- [x] Ingredients Images Storage
-
-- [x] User Saved Ingredients Storage
+  - [x] Firebase Integration
+  - [x] User Authentication Storage
+  - [x] Ingredients Images Storage
+  - [x] User Saved Ingredients Storage
 
 - [x] Authentication System
-
-- [x] Register
-
-- [x] Login
-
-- [x] Logout
+  - [x] Register
+  - [x] Login
+  - [x] Logout
 
 - [x] API Integration
-
-- [x] Recipes Searcher
-
-- [ ] Recipes Details
+  - [x] Recipes Searcher
+  - [ ] Recipes Details
 
 See the [open issues](https://github.com/marcodluz/Reciply/issues) for a full list of proposed features (and known issues).
 
