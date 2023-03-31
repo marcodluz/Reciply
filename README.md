@@ -141,10 +141,10 @@ To get a local copy up and running follow these next steps.
 ## Prerequisites
 
 1. Install Git on your computer if you haven't already. You can download it from the official website: [https://git-scm.com/downloads](https://git-scm.com/downloads).
-   > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+   > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git){:target="_blank"}.
 
 2. Install Node.js and npm on your computer. You can download them from the official website: [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
-   > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://nodejs.org/en/download/package-manager).
+   > Alternatively you can install it using your system's terminal or command prompt, read more [here](https://nodejs.org/en/download/package-manager){:target="_blank"}.
 
 3. Install the Expo CLI by running the following command in your terminal or command prompt: `npm install -g expo-cli`
 
@@ -154,7 +154,7 @@ To get a local copy up and running follow these next steps.
 
 1. Clone the Reciply application repository. You can do this by running the following command in your terminal or command prompt:
    `git clone https://github.com/marcodluz/Reciply`
-   > Alternatively you can [download the project](https://github.com/marcodluz/Reciply/archive/refs/heads/main.zip) and unzip it into a folder.
+   > Alternatively you can [download the project](https://github.com/marcodluz/Reciply/archive/refs/heads/main.zip){:target="_blank"} and unzip it into a folder.
 
 2. Navigate to the directory where you cloned the repository by running the following command:
    `cd Reciply`
@@ -163,7 +163,7 @@ To get a local copy up and running follow these next steps.
    `npm install`
 
 4. Create a Firebase project in the Firebase console by following these steps:
-   > **a.** Go to the Firebase [console](https://console.firebase.google.com/).
+   > **a.** Go to the Firebase [console](https://console.firebase.google.com/){:target="_blank"}.
 
    > **b.** Click on "Add project" or select an existing project.
 
