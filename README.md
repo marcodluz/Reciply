@@ -43,13 +43,12 @@
 <br  />
 <div align="center">
 <a  href="https://github.com/marcodluz/Reciply">
-<img  src="https://cdn-icons-png.flaticon.com/512/2276/2276931.png"  alt="Logo"  width="80"  height="80">
+<img  src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/splash-image.png?alt=media&token=a376dcdf-93f7-4d36-bb97-2e48fd12accb"  alt="Reciply"  width="80"  height="80">
 </a>
 
 <h3  align="center">Reciply</h3>
-
 <p  align="center">
-The best app to prevent food waste
+Introducing Reciply, the app that helps you reduce food waste and get creative in the kitchen!
 <br  />
 
 <a  href="https://github.com/marcodluz/Reciply"><strong>Explore the docs »</strong></a>
@@ -113,7 +112,11 @@ The best app to prevent food waste
 
 ## About The Project
 
-Reciply is an open-source fully customizable recipe platform developed in Expo React Native.
+Do you find yourself throwing out food because you don't know what to do with it? Introducing Reciply, the app that helps you reduce food waste and get creative in the kitchen!
+
+With Reciply, simply input the ingredients you have on hand, and our app will suggest delicious recipes for you to try. Not only will you be using up your ingredients, but you'll also be expanding your culinary horizons and discovering new favorite meals.
+
+Join the movement to reduce food waste and download Reciply today!
 
 <a  href="https://github.com/marcodluz/Reciply">
 
