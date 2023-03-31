@@ -59,25 +59,16 @@
 <h3  align="center">Reciply</h3>
 
 <p  align="center">
-
 The best app to prevent food waste
-
 <br  />
 
 <a  href="https://github.com/marcodluz/Reciply"><strong>Explore the docs »</strong></a>
-
 <br  />
-
 <br  />
-
 <a  href="https://github.com/marcodluz/Reciply">View Demo</a>
-
 ·
-
 <a  href="https://github.com/marcodluz/Reciply/issues">Report Bug</a>
-
 ·
-
 <a  href="https://github.com/marcodluz/Reciply/issues">Request Feature</a>
 
 </p>
@@ -188,34 +179,57 @@ To get a local copy up and running follow these simple steps.
    `npm install`
 
 4. Create a Firebase project in the Firebase console by following these steps:
+
    **a.** Go to the Firebase [console](https://console.firebase.google.com/).
+
    **b.** Click on "Add project" or select an existing project.
+
    **c.** Enter a name for your project and select your country/region.
+
    **d.** Click on "Create Project".
 
 5. Set up authentication by following these steps:
+
    **a.** Go to the Firebase console for your project.
+
    **b.** Click on "Authentication" in the left-hand menu.
+
    **c.** Click on the "Get started" button.
+
    **d.** Choose the authentication method of email and password.
+
    **e.** Follow the instructions to set up authentication.
 
 6. Set up Cloud Firestore by following these steps:
+
    **a.** Go to the Firebase console for your project.
+
    **b.** Click on "Firestore" in the left-hand menu.
+
    **c.** Click on "Create database".
+
    **d.** Choose a location for your database and click on "Next".
+
    **e.** Choose "Start in test mode" and click on "Enable".
+
    **f.** Your database is now set up and ready to use.
 
 7. Get the Firebase configuration to your project by following these steps:
+
    **a.** Go to the Firebase console for your project.
+
    **b.** Click on the "Settings" icon (gear) next to "Project Overview" in the top-left corner of the screen.
+
    **c.** Click on "Project settings".
+
    **d.** Scroll down to "Your apps" and click on the "Add app" button.
+
    **e.** Choose the platform Web.
+
    **f.** Follow the instructions to register your app.
+
    **g.** Copy the Firebase configuration information (e.g., apiKey, authDomain, databaseURL, etc.) into the correct variables of `secrets-example.js` located in the root of the project.
+
    **h.** Rename the `secrets-example.js` to `secrets.js`
 
 8. Start the Expo development server by running the following command:
