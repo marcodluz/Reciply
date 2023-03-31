@@ -1,5 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
+
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -7,8 +9,6 @@
 *** Don't forget to give the project a star!
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -18,14 +18,13 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -49,8 +48,6 @@
     <a href="https://github.com/marcodluz/Reciply/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -76,67 +73,78 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-Reciply is an open-source fully customizable recipe platform developed in ReactJS.
+Reciply is an open-source fully customizable recipe platform developed in Expo React Native.
+
+  <a href="https://github.com/marcodluz/Reciply">
+    <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Github%2Fapp-store.png?alt=media&token=5c54c52d-d0db-4f38-b147-37dbd76f72f5" alt="Available on the App Store" width="500" height="200">
+  </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
-* [![React][React.js]][React-url]
+- [![React][react.js]][react-url]
+- [![ReactNative]]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* <b>NoteJS</b> - Download and install it using the Note.js official website: https://nodejs.org/en/download/
-* <b>ExpoCLI</b>
-* <b>Expo Go</b> - Download it for your phone (IOS/Android): <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_GB&gl=US&pli=1">Google Play</a> or <a href="https://apps.apple.com/us/app/expo-go/id982107779">App Store</a>
+- <b>NoteJS</b> - Download and install it using the Note.js official website: https://nodejs.org/en/download/
+- <b>ExpoCLI</b>
+- <b>Expo Go</b> - Download it for your phone (IOS/Android): <a href="https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_GB&gl=US&pli=1">Google Play</a> or <a href="https://apps.apple.com/us/app/expo-go/id982107779">App Store</a>
 
 ### Installation
 
 <b>Please make sure that all the prerequisites are installed correctly before starting this stage of installing the project.</b>
 
-* <b>Step 1</b> - Download and unzip it into a folder: https://github.com/marcodluz/Reciply/archive/refs/heads/master.zip
+- <b>Step 1</b> - Download and unzip it into a folder: https://github.com/marcodluz/Reciply/archive/refs/heads/master.zip
 
-* <b>Step 2</b> - Open the folder in Visual Studio Code
+- <b>Step 2</b> - Open the folder in Visual Studio Code
 
-* <b>Step 3</b> - Open a Bash Terminal in VSCode
+- <b>Step 3</b> - Open a Bash Terminal in VSCode
 
-* <b>Step 4</b> - Type the command: <b>npm install</b>. Wait until everything is finished.
+- <b>Step 4</b> - Type the command: <b>npm install</b>. Wait until everything is finished.
 
-* <b>Step 5</b> - Type the command: <b>expo start</b>
+- <b>Step 5</b> - Type the command: <b>expo start</b>
 
-* <b>Step 6</b> - Scan the QR Code presented in the Bash Terminal with your phone.
+- <b>Step 6</b> - Scan the QR Code presented in the Bash Terminal with your phone.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
-- [ ] Authentication system
+- [x] Navigation System
+- [x] Firebase Integration
+  - [x] User Authentication Storage
+  - [x] Ingredients Images Storage
+  - [x] User Saved Ingredients Storage
+- [x] Authentication System
+  - [x] Register
+  - [x] Login
+  - [x] Logout
+- [x] API Integration
+  - [x] Recipes Searcher
+  - [ ] Recipes Details
 
 See the [open issues](https://github.com/marcodluz/Reciply/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -152,18 +160,16 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Marco Luz - [@marcodluz](https://twitter.com/marcodluz) - hi@marcoluz.com
@@ -172,10 +178,9 @@ Project Link: [https://github.com/marcodluz/Reciply](https://github.com/marcodlu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/marcodluz/Reciply.svg?style=for-the-badge
 [contributors-url]: https://github.com/marcodluz/Reciply/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/marcodluz/Reciply.svg?style=for-the-badge
@@ -189,19 +194,19 @@ Project Link: [https://github.com/marcodluz/Reciply](https://github.com/marcodlu
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marcodluz
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[next-url]: https://nextjs.org/
+[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
+[vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[vue-url]: https://vuejs.org/
+[angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[angular-url]: https://angular.io/
+[svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[svelte-url]: https://svelte.dev/
+[laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[laravel-url]: https://laravel.com
+[bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[bootstrap-url]: https://getbootstrap.com
+[jquery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[jquery-url]: https://jquery.com
