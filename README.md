@@ -87,8 +87,8 @@ Reciply is an open-source fully customizable recipe platform developed in Expo R
 
 ### Built With
 
-- [![React][react.js]][react-url]
-- [![Expo][expo.dev]][expo-url]
+  [![React][react.js]][react-url]
+  [![Expo][expo.dev]][expo-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
