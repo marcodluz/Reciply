@@ -6,12 +6,12 @@ import {
   ImageBackground,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from "react-native";
 import { useSearchParams } from "expo-router";
-import config from '../../secrets';
+import config from "../../secrets";
 
 const recipes = () => {
-
   const win = Dimensions.get("window");
 
   const [recipes, setRecipes] = useState([]);
@@ -21,11 +21,15 @@ const recipes = () => {
   const api_key = config.spoonacular_api_key;
 
   const handleSearch = () => {
+    const app_id = "c1118a28";
+    const app_key = "edb85fdc15be340efba11c5f25c49c67";
+
     fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}`
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${app_id}&app_key=${app_key}`
     )
       .then((response) => response.json())
-      .then((data) => setRecipes(data));
+      .then((data) => setRecipes(data.hits.map((hit) => hit.recipe)))
+      .catch((error) => console.error(error));
 
     console.log("Searching for recipes with: " + ingredients);
   };
@@ -36,27 +40,48 @@ const recipes = () => {
 
   const renderRecipeItem = ({ item }) => {
     return (
-      <TouchableOpacity style={{ width: win.width, top: 0 }}>
+      <TouchableOpacity style={{ width: win.width, top: 89 }}>
         <View
           style={{
             flexGrow: 1,
-            width: "100%",
-            alignItems: "flex-start",
+            width: "80%",
             justifyContent: "center",
+            marginBottom: 10,
+            marginLeft: "10%",
+            marginRight: "10%",
           }}
         >
           <ImageBackground
-            source={{ uri: item.image }}
+            source={{ uri: item.image.url }}
             style={{
-              width: win.width,
-              height: 150,
-              justifyContent: "center",
-              paddingLeft: 20,
+              height: 350,
+              borderRadius: 5,
+              overflow: "hidden",
             }}
+            tint="dark"
           >
-            <Text style={{ color: "white", fontWeight: "bold", fontSize: 25 }}>
-              {item.title}
-            </Text>
+            <View
+              style={{
+                flex: 1,
+                // backgroundColor: "rgba(0,0,0, 0.60)",
+                justifyContent: "flex-end",
+                paddingLeft: 20,
+                paddingBottom: 20,
+                borderRadius: 5,
+                overflow: "hidden",
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: 25,
+                  width: "80%",
+                }}
+              >
+                {item.label}
+              </Text>
+            </View>
           </ImageBackground>
         </View>
       </TouchableOpacity>
@@ -65,18 +90,27 @@ const recipes = () => {
 
   const handleRecipeSelect = (recipe) => {
     // Navigate to detail screen with recipe data
+    console.log("Selected recipe: ", recipe);
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={recipes}
         renderItem={renderRecipeItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.uri}
         onPress={handleRecipeSelect}
+        contentContainerStyle={{ paddingBottom: 90 }}
       />
     </View>
   );
 };
 
 export default recipes;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "rgb(24, 23, 30)",
+  },
+});
