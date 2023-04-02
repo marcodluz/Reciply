@@ -10,6 +10,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRouter, Stack, Link } from "expo-router";
 import { firebase } from "../firebase";
 import { AntDesign } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const register = () => {
   const router = useRouter();
@@ -48,19 +49,9 @@ const register = () => {
         // Store the user ID in AsyncStorage
         AsyncStorage.setItem("userID", user.uid);
         AsyncStorage.setItem("userEmail", user.email);
+        AsyncStorage.setItem("userPassword", password);
 
         router.replace("home");
-      })
-      .catch((error) => alert(error.message));
-  };
-
-  const handleLogin = () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Logged in with: ", user.email);
       })
       .catch((error) => alert(error.message));
   };
