@@ -61,7 +61,27 @@ export default function Page() {
             onPress: async () => {
               console.log(userID);
               // Delete corresponding document from Firestore
-              await firebase.firestore().collection("users").doc(userID).delete();
+              async function deleteDocumentAndSubcollection(userID) {
+                const subcollectionRef = firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(userID)
+                  .collection("saved-ingredients");
+
+                // Delete all documents in the subcollection
+                const snapshot = await subcollectionRef.get();
+                snapshot.docs.forEach(async (doc) => {
+                  await doc.ref.delete();
+                });
+
+                // Delete the main document
+                await firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(userID)
+                  .delete();
+              }
+              await deleteDocumentAndSubcollection(userID);
 
               // Delete user account from Firebase
               await userCredential.user.delete();
