@@ -38,18 +38,18 @@ const login = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
+      .then(async (userCredentials) => {
         const user = userCredentials.user;
         console.log("Logged in with: ", user.email);
 
         // Store the user ID in AsyncStorage
         AsyncStorage.setItem("userID", user.uid);
         AsyncStorage.setItem("userEmail", user.email);
-
+        AsyncStorage.setItem("userPassword", password);
         router.replace("home");
       })
       .catch((error) => alert(error.message));
