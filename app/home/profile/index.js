@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
+import { View, Text, TouchableOpacity, ScrollView, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { firebase } from "../../../firebase";
@@ -30,8 +30,60 @@ export default function Page() {
         console.log("Logged out with: ", await getSavedUserEmail());
         AsyncStorage.removeItem("userID");
         AsyncStorage.removeItem("userEmail");
+        AsyncStorage.removeItem("userPassword");
       })
       .catch((error) => alert(error.message));
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      // Retrieve saved user ID, email, and password from AsyncStorage
+      const userID = await AsyncStorage.getItem("userID");
+      const userEmail = await AsyncStorage.getItem("userEmail");
+      const userPassword = await AsyncStorage.getItem("userPassword");
+
+      // Get user credentials from Firebase using saved email
+      const userCredential = await firebase
+        .auth()
+        .signInWithEmailAndPassword(userEmail, userPassword);
+
+      // Ask the user to confirm that they really want to delete their account
+      Alert.alert(
+        "Delete Account",
+        "Are you sure you want to delete your account?",
+        [
+          {
+            text: "Cancel",
+            style: "cancel",
+          },
+          {
+            text: "Delete",
+            onPress: async () => {
+              console.log(userID);
+              // Delete corresponding document from Firestore
+              await firebase.firestore().collection("users").doc(userID).delete();
+
+              // Delete user account from Firebase
+              await userCredential.user.delete();
+
+              // Remove saved user ID, email, and password from AsyncStorage
+              await AsyncStorage.removeItem("userID");
+              await AsyncStorage.removeItem("userEmail");
+              await AsyncStorage.removeItem("userPassword");
+
+              // Redirect to login page
+              router.replace("../../login");
+
+              console.log("Account deleted successfully!");
+            },
+            style: "destructive",
+          },
+        ]
+      );
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
   };
 
   return (
@@ -39,6 +91,12 @@ export default function Page() {
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View>
           {/* <Link href="/home/profile/settings">Settings</Link> */}
+          <TouchableOpacity
+            onPress={handleDeleteAccount}
+            style={styles.buttonDelete}
+          >
+            <Text style={styles.textDelete}>Delete Account</Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={handleSignOut} style={styles.button}>
             <Text style={styles.text}>Sign out</Text>
           </TouchableOpacity>
@@ -65,11 +123,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     margin: 10,
   },
+  buttonDelete: {
+    backgroundColor: "red",
+    borderRadius: 5,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+  },
   text: {
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "uppercase",
     color: "black",
+  },
+  textDelete: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    color: "white",
   },
 });
