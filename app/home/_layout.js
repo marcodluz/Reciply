@@ -9,8 +9,8 @@ export default () => {
       screenOptions={{
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "grey",
-        tabBarStyle: {backgroundColor: "rgb(24, 23, 30)"},
-        headerStyle: {backgroundColor: "rgb(24, 23, 30)"},
+        tabBarStyle: { backgroundColor: "rgb(24, 23, 30)" },
+        headerStyle: { backgroundColor: "rgb(24, 23, 30)" },
         headerShown: false,
       }}
     >
@@ -26,12 +26,9 @@ export default () => {
       <Tabs.Screen
         name="search-recipes"
         options={{
-          tabBarButton: () => (
-              <View style={{width:0, height:0}}></View>
-          ),
-          tabBarVisible:false //hide tab bar on this screen
-  
-      }}
+          tabBarButton: () => <View style={{ width: 0, height: 0 }}></View>,
+          tabBarVisible: false, //hide tab bar on this screen
+        }}
       />
       <Tabs.Screen
         name="profile"
@@ -41,6 +38,19 @@ export default () => {
           tabBarIcon: ({ color }) => (
             <Ionicons name="person" size={24} color={color} />
           ),
+        }}
+      />
+
+
+      {/* 
+          For designing purpose only!
+          Place this Tab Screen in first, to test for every update
+      */}
+      <Tabs.Screen
+        name="search-recipes-design"
+        options={{
+          tabBarButton: () => <View style={{ width: 0, height: 0 }}></View>,
+          tabBarVisible: false, //hide tab bar on this screen
         }}
       />
     </Tabs>

@@ -6,13 +6,13 @@ import {
   ImageBackground,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from "react-native";
 import { useSearchParams } from "expo-router";
-import config from '../../secrets';
+import config from "../../secrets";
+import { LinearGradient } from "expo-linear-gradient";
 
 const recipes = () => {
-
-  const win = Dimensions.get("window");
 
   const [recipes, setRecipes] = useState([]);
 
@@ -22,7 +22,7 @@ const recipes = () => {
 
   const handleSearch = () => {
     fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}`
+      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}&ranking=1&number=30`
     )
       .then((response) => response.json())
       .then((data) => setRecipes(data));
@@ -36,29 +36,19 @@ const recipes = () => {
 
   const renderRecipeItem = ({ item }) => {
     return (
-      <TouchableOpacity style={{ width: win.width, top: 0 }}>
-        <View
-          style={{
-            flexGrow: 1,
-            width: "100%",
-            alignItems: "flex-start",
-            justifyContent: "center",
-          }}
+      <TouchableOpacity style={styles.recipeContainer}>
+        <ImageBackground
+          source={{ uri: item.image }}
+          style={styles.recipeImage}
         >
-          <ImageBackground
-            source={{ uri: item.image }}
-            style={{
-              width: win.width,
-              height: 150,
-              justifyContent: "center",
-              paddingLeft: 20,
-            }}
-          >
-            <Text style={{ color: "white", fontWeight: "bold", fontSize: 25 }}>
-              {item.title}
-            </Text>
-          </ImageBackground>
-        </View>
+          <LinearGradient
+            colors={["transparent", "rgba(0,0,0,0.7)"]}
+            locations={[0, 1]}
+            style={styles.recipeImageGradient}
+          />
+          <Text style={styles.recipeTitle}>{item.title}</Text>
+          <Text style={styles.recipeDescription}>{item.usedIngredientCount + item.missedIngredientCount} Ingredients | {item.missedIngredientCount} missing</Text>
+        </ImageBackground>
       </TouchableOpacity>
     );
   };
@@ -68,7 +58,7 @@ const recipes = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={recipes}
         renderItem={renderRecipeItem}
@@ -80,3 +70,46 @@ const recipes = () => {
 };
 
 export default recipes;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "rgb(29, 28, 34)",
+    paddingTop: 100,
+  },
+  recipeContainer: {
+    flexGrow: 1,
+    paddingHorizontal: "10%", // set 10% padding on both sides
+  },
+  recipeImage: {
+    flex: 1,
+    resizeMode: "cover",
+    height: 350,
+    justifyContent: "flex-end",
+    paddingBottom: 20,
+    paddingLeft: 20,
+    borderRadius: 20,
+    overflow: "hidden",
+    borderColor: "rgb(230, 230, 230)",
+    borderWidth: 2,
+    marginBottom: 20,
+  },
+  recipeImageGradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "60%", // set the height of the gradient to 30%
+  },
+  recipeTitle: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 25,
+    width: "75%",
+  },
+  recipeDescription: {
+    color: "white",
+    fontWeight: "600",
+    fontSize: 13,
+    marginTop: 10,
+  },
+});
