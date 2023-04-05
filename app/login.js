@@ -50,7 +50,7 @@ const login = () => {
         AsyncStorage.setItem("userID", user.uid);
         AsyncStorage.setItem("userEmail", user.email);
         AsyncStorage.setItem("userPassword", password);
-        router.replace("home");
+        router.replace("home/recipes/ingredients");
       })
       .catch((error) => alert(error.message));
   };
@@ -73,7 +73,7 @@ const login = () => {
             <AntDesign
               name="back"
               size={24}
-              color="white"
+              color="lightgrey"
               onPress={() => router.push("./")}
             />
           ), // set custom back button icon
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "rgb(24, 23, 30)",
+    backgroundColor: "rgb(255, 255, 255)",
   },
   main: {
     flex: 1,
@@ -150,11 +150,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   subtitle: {
     fontSize: 30,
-    color: "white",
+    color: "black",
   },
   inputContainer: {
     alignItems: "center",
@@ -166,10 +166,10 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 10,
     marginTop: 10,
-    backgroundColor: "rgb(29, 28, 34)",
-    borderColor: "rgb(80, 80, 80)",
+    backgroundColor: "rgb(255, 255, 255)",
+    borderColor: "rgb(200, 200, 200)",
     borderWidth: 1,
-    color: "white",
+    color: "black",
     minWidth: "100%",
   },
   buttonContainer: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -187,13 +187,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   buttonOutline: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     marginTop: 5,
     borderColor: "#0782F9",
     borderWidth: 2,
   },
   buttonText: {
-    color: "black",
+    color: "white",
     fontWeight: "700",
     fontSize: 16,
   },
@@ -203,10 +203,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   registerText: {
-    color: "rgb(200, 200, 200)",
+    color: "rgb(100, 100, 100)",
   },
   registerLink: {
-    color: "white",
+    color: "black",
     fontWeight: "600",
   },
 });

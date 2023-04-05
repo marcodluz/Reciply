@@ -8,33 +8,68 @@ import {
   Dimensions,
   ScrollView,
   StyleSheet,
+  SafeAreaView,
 } from "react-native";
-import { useSearchParams } from "expo-router";
+import { Stack, useSearchParams } from "expo-router";
 import config from "../../secrets";
 import { LinearGradient } from "expo-linear-gradient";
 
 const recipes = () => {
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.recipeContainer}>
-          <ImageBackground
-            source={{
-              uri: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-            }}
-            style={styles.recipeImage}
-          >
-            <LinearGradient
-              colors={["transparent", "rgba(0,0,0,0.7)"]}
-              locations={[0, 1]}
-              style={styles.recipeImageGradient}
+      <Stack.Screen
+        options={{
+          title: "Salmon Sushi",
+          headerTitleStyle: {
+            fontSize: 25,
+            fontWeight: "bold",
+          },
+          headerTransparent: false,
+          headerStyle: {
+            backgroundColor: "white", // set header background to transparent
+            elevation: 0, // remove elevation/shadow from header
+            borderBottomWidth: 0,
+            borderBottomColor: "transparent",
+          },
+          headerLeft: () => (
+            <AntDesign
+              name="back"
+              size={24}
+              color="lightgrey"
+              onPress={() => router.back()}
             />
-            <Text style={styles.recipeTitle}>Salmon Sushi Match</Text>
-            <Text style={styles.recipeDescription}>
-              12 Ingredients | 40 Min
-            </Text>
-          </ImageBackground>
-          
-
+          ), // set custom back button icon
+        }}
+      />
+      <Text
+        style={{
+          width: "100%",
+          paddingTop: 70,
+          paddingBottom: 20,
+          fontSize: 25,
+          color: "black",
+          fontWeight: "600",
+          paddingHorizontal: "5%", // set 10% padding on both sides
+          textAlign: "center",
+        }}
+      >
+        Recipes
+      </Text>
+      <TouchableOpacity style={styles.recipeContainer}>
+        <ImageBackground
+          source={{
+            uri: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
+          }}
+          style={styles.recipeImage}
+        >
+          <LinearGradient
+            colors={["transparent", "rgba(0,0,0,0.7)"]}
+            locations={[0, 1]}
+            style={styles.recipeImageGradient}
+          />
+          <Text style={styles.recipeTitle}>Salmon Sushi Match</Text>
+          <Text style={styles.recipeDescription}>12 Ingredients | 40 Min</Text>
+        </ImageBackground>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -44,12 +79,13 @@ export default recipes;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgb(29, 28, 34)",
-    paddingTop: 100,
+    flex: 1,
+    //backgroundColor: "rgb(29, 28, 34)", //Dark preset
+    backgroundColor: "rgb(255, 255, 255)", //Ligh preset
   },
   recipeContainer: {
-    flexGrow: 1,
-    paddingHorizontal: "10%", // set 10% padding on both sides
+    flex: 1,
+    paddingHorizontal: "5%", // set 10% padding on both sides
   },
   recipeImage: {
     flex: 1,
@@ -58,10 +94,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     paddingBottom: 20,
     paddingLeft: 20,
-    borderRadius: 20,
+    borderRadius: 25,
     overflow: "hidden",
-    borderColor: "rgb(230, 230, 230)",
-    borderWidth: 2,
+    //borderColor: "rgb(230, 230, 230)",
+    //borderWidth: 2,
     marginBottom: 20,
   },
   recipeImageGradient: {
