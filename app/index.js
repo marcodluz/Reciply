@@ -11,7 +11,7 @@ export default function Page() {
   AsyncStorage.getItem("userID").then((userID) => {
     if (userID) {
       // Navigate to the panel screen
-      router.replace("home");
+      router.replace("/home/recipes/ingredients");
 
       console.log(userID);
     }
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
-    backgroundColor: "rgb(24, 23, 30)",
+    backgroundColor: "rgb(255, 255, 255)",
   },
   main: {
     flex: 1,
@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 55,
     fontWeight: "bold",
-    color: "white",
+    color: "black",
   },
   subtitle: {
     fontSize: 19,
-    color: "rgb(200, 200, 200)",
+    color: "rgb(55, 55, 55)",
     marginTop: 10,
   },
   splashImage: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginBottom: 150,
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   buttonText: {
-    color: "black",
+    color: "white",
     fontWeight: "700",
     fontSize: 16,
   },
