@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, ScrollView, Alert } from "react-native";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { firebase } from "../../../firebase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -129,14 +129,14 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(24, 23, 30)",
+    backgroundColor: "rgb(255, 255, 255)",
   },
   scrollViewContainer: {
     flex: 1,
     justifyContent: "flex-end",
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 5,
     padding: 10,
     alignItems: "center",
@@ -144,25 +144,26 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonDelete: {
-    backgroundColor: "red",
+    backgroundColor: "white",
     borderRadius: 5,
     padding: 10,
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
+    borderColor: "rgba(255, 0, 0, 0.7)",
+    borderWidth: 2,
   },
   text: {
-    color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "uppercase",
-    color: "black",
+    color: "white",
   },
   textDelete: {
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "uppercase",
-    color: "white",
+    color: "rgba(255, 0, 0, 0.7)",
   },
 });

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "expo-router";
-import { firebase } from "../../firebase";
+import { firebase } from "../../../firebase";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -145,7 +145,7 @@ const panel = () => {
           console.error("Error adding ingredient:", error);
         });
     }
-  }
+  };
 
   const handleRemoveIngredientClick = async (savedIngredientId) => {
     const userId = await getSavedUserId();
@@ -195,7 +195,7 @@ const panel = () => {
     return (
       <TouchableOpacity
         key={savedIngredient.id}
-        style={[styles.button, { backgroundColor: "rgba(157, 251, 211, 0.7)" }]}
+        style={[styles.button, { backgroundColor: "rgb(245, 245, 245)" }]}
         onPress={() => handleRemoveIngredientClick(savedIngredient.id)}
       >
         <Image
@@ -231,22 +231,23 @@ const panel = () => {
             buttonRefs.current.push(event.nativeEvent.layout)
           }
         >
-          <Text
+          {/* <Text
             style={{
               width: "100%",
               paddingTop: 70,
-              paddingBottom: 5,
+              paddingBottom: 20,
               fontSize: 25,
-              color: "white",
+              color: "black",
               fontWeight: "600",
+              textAlign: "center",
             }}
           >
             Your ingredients
-          </Text>
+          </Text> */}
           {savedIngredients.length === 0 ? (
             <Text
               style={{
-                color: "white",
+                color: "black",
                 fontSize: 15,
                 fontWeight: "500",
                 textAlign: "center",
@@ -275,14 +276,13 @@ const panel = () => {
           <Text
             style={{
               width: "100%",
-              paddingTop: 20,
               paddingBottom: 15,
               fontSize: 15,
-              color: "white",
+              color: "black",
               fontWeight: "600",
             }}
           >
-            <FontAwesome name="angle-down" size={15} color="white" /> List of
+            <FontAwesome name="angle-down" size={15} color="black" /> List of
             ingredients
           </Text>
           {Object.entries(ingredientsByCategory).map(
@@ -291,7 +291,7 @@ const panel = () => {
                 key={categoryName}
                 style={{
                   width: "100%",
-                  backgroundColor: "rgb(13, 12, 18)",
+                  backgroundColor: "rgb(220, 220, 220)",
                   paddingLeft: 10,
                   paddingTop: 14,
                   paddingRight: 10,
@@ -304,7 +304,13 @@ const panel = () => {
                   style={{}}
                   onPress={() => toggleCategoryVisibility(categoryName)}
                 >
-                  <Text style={{ color: "white", paddingBottom: 5 }}>
+                  <Text
+                    style={{
+                      color: "black",
+                      paddingBottom: 5,
+                      fontWeight: "500",
+                    }}
+                  >
                     {categoryName}
                   </Text>
                 </TouchableOpacity>
@@ -316,7 +322,7 @@ const panel = () => {
                         style={[
                           styles.button,
                           {
-                            backgroundColor: "rgba(157, 251, 211, 0.2)",
+                            backgroundColor: "rgb(245, 245, 245)",
                             paddingTop: 23,
                             paddingBottom: 23,
                           },
@@ -342,7 +348,7 @@ const panel = () => {
         <TouchableOpacity style={styles.submitButton}>
           <Link
             href={{
-              pathname: "/home/search-recipes",
+              pathname: "/home/recipes/search-recipes",
               params: { ingredients: ingredientsString },
             }}
           >
@@ -359,10 +365,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "rgb(24, 23, 30)",
+    //backgroundColor: "rgb(24, 23, 30)", //Dark preset
+    backgroundColor: "rgb(255, 255, 255)", //Light preset
   },
   scrollViewContainer: {
-    padding: 10,
+    paddingHorizontal: "5%", // set 10% padding on both sides
     alignItems: "center",
     justifyContent: "flex-end",
   },
@@ -371,6 +378,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "flex-start",
     alignItems: "center",
+    marginTop: 30,
   },
   button: {
     width: "32%",
@@ -381,7 +389,7 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   buttonText: {
-    color: "#fff",
+    color: "black",
     fontSize: 12,
     marginTop: 12,
   },
@@ -398,6 +406,7 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
     fontSize: 15,
+    fontWeight: "bold",
   },
 });
 
