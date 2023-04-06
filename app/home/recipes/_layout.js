@@ -31,7 +31,10 @@ export default () => {
         name="search-recipes"
         //options={{ headerShown: false }}
       />
-      <Stack.Screen name="recipe" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="recipe"
+        //options={{ headerShown: false }}
+      />
     </Stack>
   );
 };

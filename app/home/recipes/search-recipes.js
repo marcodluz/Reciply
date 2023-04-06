@@ -23,24 +23,26 @@ const searchRecipes = () => {
     try {
       console.log("Searching for recipes with: " + ingredients);
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}&number=50`
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}&ranking=2&number=2`
       );
       const data = await response.json();
       setRecipes(data);
-      //await AsyncStorage.setItem("ingredients", ingredients);
-      //await AsyncStorage.setItem("recipes", JSON.stringify(data));
+
+      await AsyncStorage.setItem("recipes", JSON.stringify(data));
+
+      if (ingredients) {
+        await AsyncStorage.setItem("ingredients", ingredients);
+      }
     } catch (error) {
       console.error(error);
     }
   };
-  
-  
 
   useEffect(() => {
     const getRecipes = async () => {
       const savedIngredients = await AsyncStorage.getItem("ingredients");
       const savedRecipes = await AsyncStorage.getItem("recipes");
-      if (savedIngredients === ingredients && savedRecipes) {
+      if ((savedIngredients === ingredients && savedRecipes) || (ingredients == 1 && savedRecipes)) {
         setRecipes(JSON.parse(savedRecipes));
       } else {
         handleSearch();
@@ -49,8 +51,10 @@ const searchRecipes = () => {
     getRecipes();
   }, [ingredients]);
 
-  const handleRecipeSelect = (recipe) => {
+  const handleRecipeSelect = (recipeID) => {
     // Navigate to detail screen with recipe data
+    console.log("RecipeID: " + recipeID);
+    router.replace("/home/recipes/recipe?recipeID=" + recipeID);
   };
 
   return (
@@ -84,10 +88,10 @@ const searchRecipes = () => {
           <TouchableOpacity
             key={`${recipe.id}-${index}`}
             style={styles.recipeContainer}
-            onPress={() => handleRecipeSelect(recipe)}
+            onPress={() => handleRecipeSelect(`${recipe.id}`)}
           >
             <ImageBackground
-              source={{ uri: recipe.recipe.image }}
+              source={{ uri: recipe.image }}
               style={styles.recipeImage}
             >
               <LinearGradient
@@ -95,9 +99,10 @@ const searchRecipes = () => {
                 locations={[0, 1]}
                 style={styles.recipeImageGradient}
               />
-              <Text style={styles.recipeTitle}>{recipe.recipe.label}</Text>
+              <Text style={styles.recipeTitle}>{recipe.title}</Text>
               <Text style={styles.recipeDescription}>
-                {recipe.recipe.ingredientLines.length} Ingredients
+                {recipe.missedIngredientCount + recipe.usedIngredientCount}{" "}
+                Ingredients | {recipe.missedIngredientCount} missing
               </Text>
             </ImageBackground>
           </TouchableOpacity>
