@@ -7,12 +7,14 @@ import {
   Image,
 } from "react-native";
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 import { firebase } from "../../../firebase";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const panel = () => {
+  const router = useRouter();
+
   // UI References
   const scrollViewRef = useRef(null);
   const [submitButtonVisible, setSubmitButtonVisible] = useState(false);
@@ -345,15 +347,15 @@ const panel = () => {
       </ScrollView>
 
       {submitButtonVisible ? (
-        <TouchableOpacity style={styles.submitButton}>
-          <Link
-            href={{
-              pathname: "/home/recipes/search-recipes",
-              params: { ingredients: ingredientsString },
-            }}
-          >
-            <Text style={styles.submitButtonText}>Search Recipes</Text>
-          </Link>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() =>
+            router.push(
+              "/home/recipes/search-recipes?ingredients=" + ingredientsString
+            )
+          }
+        >
+          <Text style={styles.submitButtonText}>Search Recipes</Text>
         </TouchableOpacity>
       ) : null}
     </View>

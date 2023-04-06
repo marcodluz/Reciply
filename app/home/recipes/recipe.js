@@ -1,24 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
   Text,
   ImageBackground,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
-import { useRouter, Stack, Link } from "expo-router";
+import { useRouter, Stack, useSearchParams } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import config from "../../../secrets";
 
 const recipe = () => {
   const router = useRouter();
+
+  const api_key = config.spoonacular_api_key;
+
+  const { recipeID } = useSearchParams();
+
+  const [recipeData, setRecipeData] = useState(null);
+
+  useEffect(() => {
+    console.log("Loading recipeID: " + recipeID);
+    const fetchRecipe = async () => {
+      const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${api_key}`);
+      const data = await response.json();
+      setRecipeData(data);
+    };
+
+    fetchRecipe();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <Stack.Screen
         options={{
-          title: "Salmon Sushi",
+          title: recipeData?.title || `${recipeID}`,
           headerTitleStyle: {
             fontSize: 25,
             fontWeight: "bold",
@@ -35,16 +52,14 @@ const recipe = () => {
               name="back"
               size={24}
               color="lightgrey"
-              onPress={() => router.back()}
+              onPress={() => router.replace("/home/recipes/search-recipes?ingredients=" + 1)}
             />
           ), // set custom back button icon
         }}
       />
-      {/* <Text style={styles.recipeTitle}>Salmon Sushi</Text> */}
-      <View style={styles.recipeImageContainer}>
         <ImageBackground
           source={{
-            uri: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
+            uri: recipeData?.image,
           }}
           style={styles.recipeImage}
         >
@@ -54,45 +69,22 @@ const recipe = () => {
             style={styles.recipeImageGradient}
           />
         </ImageBackground>
-      </View>
-      <Text style={styles.recipeIngredientsTitle}>Ingredients (12)</Text>
+      <Text style={styles.recipeIngredientsTitle}>Ingredients ({recipeData?.extendedIngredients?.length || "N/A"})</Text>
       <View style={styles.ingredientsContainer}>
-        <View style={styles.ingredientContainer}>
-          <View style={styles.ingredientImageContainer}>
-            <ImageBackground
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Ingredients%2FMeat%20%26%20Fish%2FBeef.png?alt=media&token=3ddc0f91-6611-4e5c-982c-29806b5fd7c0",
-              }}
-              style={styles.recipeIngredientImage}
-            />
+        {recipeData?.extendedIngredients?.map((ingredient, index) => (
+          <View style={styles.ingredientContainer} key={index}>
+            <View style={styles.ingredientImageContainer}>
+              <ImageBackground
+                source={{
+                  uri: `https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`,
+                }}
+                style={styles.recipeIngredientImage}
+              />
+            </View>
+            <Text style={styles.ingredientTitle}>{ingredient.name}</Text>
+            <Text style={styles.ingredientQuantity}>{ingredient.amount} {ingredient.unit}</Text>
           </View>
-          <Text style={styles.ingredientTitle}>Steak</Text>
-          <Text style={styles.ingredientQuantity}>200 gr</Text>
-        </View>
-        <View style={styles.ingredientContainer}>
-          <View style={styles.ingredientImageContainer}>
-            <ImageBackground
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Ingredients%2FMeat%20%26%20Fish%2FBeef.png?alt=media&token=3ddc0f91-6611-4e5c-982c-29806b5fd7c0",
-              }}
-              style={styles.recipeIngredientImage}
-            />
-          </View>
-          <Text style={styles.ingredientTitle}>Steak</Text>
-          <Text style={styles.ingredientQuantity}>200 gr</Text>
-        </View>
-        <View style={styles.ingredientContainer}>
-          <View style={styles.ingredientImageContainer}>
-            <ImageBackground
-              source={{
-                uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/Ingredients%2FMeat%20%26%20Fish%2FBeef.png?alt=media&token=3ddc0f91-6611-4e5c-982c-29806b5fd7c0",
-              }}
-              style={styles.recipeIngredientImage}
-            />
-          </View>
-          <Text style={styles.ingredientTitle}>Steak</Text>
-          <Text style={styles.ingredientQuantity}>200 gr</Text>
-        </View>
+        ))}
       </View>
     </ScrollView>
   );
@@ -108,25 +100,16 @@ const styles = StyleSheet.create({
     //paddingTop: 57,
     paddingHorizontal: "10%", // set 10% padding on both sides
   },
-  recipeImageContainer: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 10,
-    elevation: 5,
-  },
   recipeImage: {
+    flex: 1,
     resizeMode: "cover",
+    width: "100%",
     height: 200,
     borderRadius: 25,
     overflow: "hidden",
-    //borderColor: "rgb(230, 230, 230)",
-    //borderWidth: 2,
-    marginBottom: 30,
-    marginTop: 30,
+    borderColor: "red",
+    borderWidth: 2,
+    marginBottom: 20,
   },
   recipeTitle: {
     //color: "white", //Dark preset
@@ -149,12 +132,12 @@ const styles = StyleSheet.create({
   },
   ingredientContainer: {
     backgroundColor: "rgb(245, 245, 245)",
-    height: 70  ,
+    height: 70,
     paddingVertical: 7.5,
     paddingLeft: 7.5,
     paddingRight: 15,
     borderRadius: 15,
-    flexDirection: 'row',
+    flexDirection: "row",
     alignItems: "center",
     marginBottom: 20,
   },
@@ -171,13 +154,13 @@ const styles = StyleSheet.create({
   },
   ingredientTitle: {
     marginLeft: 15,
-    fontSize: 17, 
+    fontSize: 17,
     fontWeight: "400",
     flex: 1,
   },
   ingredientQuantity: {
     fontSize: 13,
     color: "rgb(150, 150, 150)",
-    flex: 0,  
-  }
+    flex: 0,
+  },
 });
