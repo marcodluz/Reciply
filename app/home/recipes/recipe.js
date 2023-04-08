@@ -57,7 +57,7 @@ const recipe = () => {
           ), // set custom back button icon
         }}
       />
-        <ImageBackground
+        {/* <ImageBackground
           source={{
             uri: recipeData?.image,
           }}
@@ -68,19 +68,19 @@ const recipe = () => {
             locations={[0, 1]}
             style={styles.recipeImageGradient}
           />
-        </ImageBackground>
+        </ImageBackground> */}
       <Text style={styles.recipeIngredientsTitle}>Ingredients ({recipeData?.extendedIngredients?.length || "N/A"})</Text>
       <View style={styles.ingredientsContainer}>
         {recipeData?.extendedIngredients?.map((ingredient, index) => (
           <View style={styles.ingredientContainer} key={index}>
-            <View style={styles.ingredientImageContainer}>
+            {/* <View style={styles.ingredientImageContainer}>
               <ImageBackground
                 source={{
                   uri: `https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`,
                 }}
                 style={styles.recipeIngredientImage}
               />
-            </View>
+            </View> */}
             <Text style={styles.ingredientTitle}>{ingredient.name}</Text>
             <Text style={styles.ingredientQuantity}>{ingredient.amount} {ingredient.unit}</Text>
           </View>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     //backgroundColor: "red",
     textAlign: "left",
+    marginTop: 20,
   },
   ingredientsContainer: {
     marginTop: 30,
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "400",
     flex: 1,
+    textTransform: "capitalize",
   },
   ingredientQuantity: {
     fontSize: 13,
