@@ -41,7 +41,7 @@ const recipe = () => {
         `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${api_key}`
       );
       const data = await response.json();
-      // set the steps array from the first object in data
+
       setRecipeInstructions(data.length > 0 ? data[0].steps : []);
     };
 
@@ -59,8 +59,8 @@ const recipe = () => {
           },
           headerTransparent: false,
           headerStyle: {
-            backgroundColor: "white", // set header background to transparent
-            elevation: 0, // remove elevation/shadow from header
+            backgroundColor: "white",
+            elevation: 0,
             borderBottomWidth: 0,
             borderBottomColor: "transparent",
           },
@@ -73,7 +73,7 @@ const recipe = () => {
                 router.replace("/home/recipes/search-recipes?ingredients=" + 1)
               }
             />
-          ), // set custom back button icon
+          ),
         }}
       />
       {/* <ImageBackground
@@ -130,10 +130,8 @@ export default recipe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: "rgb(29, 28, 34)", //Dark preset
-    backgroundColor: "rgb(255, 255, 255)", //Ligh preset
-    //paddingTop: 57,
-    paddingHorizontal: "10%", // set 10% padding on both sides
+    backgroundColor: "rgb(255, 255, 255)",
+    paddingHorizontal: "10%",
   },
   recipeImage: {
     flex: 1,
@@ -147,19 +145,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   recipeTitle: {
-    //color: "white", //Dark preset
-    color: "black", //Ligh preset
+    color: "black",
     fontWeight: "bold",
     fontSize: 25,
-    //backgroundColor: "red",
     textAlign: "center",
   },
   recipeIngredientsTitle: {
-    //color: "white", //Dark preset
-    color: "black", //Ligh preset
+    color: "black",
     fontWeight: "bold",
     fontSize: 20,
-    //backgroundColor: "red",
     textAlign: "left",
     marginTop: 20,
   },
@@ -203,7 +197,7 @@ const styles = StyleSheet.create({
 
   instructionsContainer: {
     marginTop: 30,
-    height: "auto", // add this line
+    height: "auto",
   },
   instructionsTitle: {
     color: "black",
