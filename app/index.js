@@ -1,24 +1,27 @@
+// Import necessary components and libraries
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Stack, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Export the component Page
 export default function Page() {
-  // return <Redirect href={'/home/panel'} />
-
+  // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
-  // Check if the user is already authenticated
+  // Retrieve the userID from AsyncStorage
   AsyncStorage.getItem("userID").then((userID) => {
+    // If the userID exists, redirect the user to the ingredients screen
     if (userID) {
-      // Navigate to the panel screen
       router.replace("/home/recipes/ingredients");
-
+      // Print the userID to the console
       console.log(userID);
     }
   });
 
+  // Render the Page component
   return (
     <View style={styles.container}>
+      {/* Define the header for the App's First screen */}
       <Stack.Screen options={{ title: "Home", headerShown: false }} />
       <View style={styles.main}>
         <Image
@@ -32,18 +35,13 @@ export default function Page() {
 
         <TouchableOpacity
           onPress={() => {
+            // Navigate to the login page when the "Get Started" button is pressed
             router.push("login");
           }}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Get Started</Text>
         </TouchableOpacity>
-        {/* <Link
-          href={{ pathname: "/panel", params: { username: "Marco" } }}
-          style={styles.link}
-        >
-          Panel
-        </Link> */}
       </View>
     </View>
   );

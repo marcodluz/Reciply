@@ -15,22 +15,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const panel = () => {
   const router = useRouter();
 
-  // UI References
   const scrollViewRef = useRef(null);
   const [submitButtonVisible, setSubmitButtonVisible] = useState(false);
   const buttonRefs = useRef([]);
 
-  // User References
-  //const userId = firebase.auth().currentUser.uid;
-
-  // Check if the user is already authenticated
   AsyncStorage.getItem("userID").then((userID) => {
     if (userID) {
-      //console.log(userID);
+      console.log(userID);
     }
   });
 
-  // Define the function that retrieves the saved user ID from AsyncStorage
   const getSavedUserId = async () => {
     try {
       const userId = await AsyncStorage.getItem("userID");
@@ -41,7 +35,6 @@ const panel = () => {
     }
   };
 
-  // Get the application ingredients
   const [ingredients, setIngredients] = useState([]);
   const ingredientRef = firebase.firestore().collection("ingredients");
   useEffect(() => {
@@ -73,13 +66,11 @@ const panel = () => {
 
     acc[categoryName].push(ingredient);
 
-    // sort the array of ingredients in each category by name
     acc[categoryName].sort((a, b) => a.name.localeCompare(b.name));
 
     return acc;
   }, {});
 
-  // Get the saved ingredients and show the search button
   const [savedIngredients, setSavedIngredients] = useState([]);
   useEffect(() => {
     const getSavedIngredients = async () => {
@@ -233,19 +224,6 @@ const panel = () => {
             buttonRefs.current.push(event.nativeEvent.layout)
           }
         >
-          {/* <Text
-            style={{
-              width: "100%",
-              paddingTop: 70,
-              paddingBottom: 20,
-              fontSize: 25,
-              color: "black",
-              fontWeight: "600",
-              textAlign: "center",
-            }}
-          >
-            Your ingredients
-          </Text> */}
           {savedIngredients.length === 0 ? (
             <Text
               style={{
@@ -362,16 +340,14 @@ const panel = () => {
   );
 };
 
-// Screen style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    //backgroundColor: "rgb(24, 23, 30)", //Dark preset
-    backgroundColor: "rgb(255, 255, 255)", //Light preset
+    backgroundColor: "rgb(255, 255, 255)",
   },
   scrollViewContainer: {
-    paddingHorizontal: "5%", // set 10% padding on both sides
+    paddingHorizontal: "5%",
     alignItems: "center",
     justifyContent: "flex-end",
   },
