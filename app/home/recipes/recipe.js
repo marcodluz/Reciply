@@ -19,16 +19,33 @@ const recipe = () => {
   const { recipeID } = useSearchParams();
 
   const [recipeData, setRecipeData] = useState(null);
+  const [recipeInstructions, setRecipeInstructions] = useState([]);
 
   useEffect(() => {
     console.log("Loading recipeID: " + recipeID);
     const fetchRecipe = async () => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${api_key}`);
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${api_key}`
+      );
       const data = await response.json();
       setRecipeData(data);
     };
 
     fetchRecipe();
+  }, []);
+
+  useEffect(() => {
+    console.log("Loading Instructions recipeID: " + recipeID);
+    const fetchRecipeInstructions = async () => {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${api_key}`
+      );
+      const data = await response.json();
+
+      setRecipeInstructions(data.length > 0 ? data[0].steps : []);
+    };
+
+    fetchRecipeInstructions();
   }, []);
 
   return (
@@ -42,8 +59,8 @@ const recipe = () => {
           },
           headerTransparent: false,
           headerStyle: {
-            backgroundColor: "white", // set header background to transparent
-            elevation: 0, // remove elevation/shadow from header
+            backgroundColor: "white",
+            elevation: 0,
             borderBottomWidth: 0,
             borderBottomColor: "transparent",
           },
@@ -52,12 +69,14 @@ const recipe = () => {
               name="back"
               size={24}
               color="lightgrey"
-              onPress={() => router.replace("/home/recipes/search-recipes?ingredients=" + 1)}
+              onPress={() =>
+                router.replace("/home/recipes/search-recipes?ingredients=" + 1)
+              }
             />
-          ), // set custom back button icon
+          ),
         }}
       />
-        <ImageBackground
+      {/* <ImageBackground
           source={{
             uri: recipeData?.image,
           }}
@@ -68,21 +87,37 @@ const recipe = () => {
             locations={[0, 1]}
             style={styles.recipeImageGradient}
           />
-        </ImageBackground>
-      <Text style={styles.recipeIngredientsTitle}>Ingredients ({recipeData?.extendedIngredients?.length || "N/A"})</Text>
+        </ImageBackground> */}
+      <Text style={styles.recipeIngredientsTitle}>
+        Ingredients ({recipeData?.extendedIngredients?.length || "N/A"})
+      </Text>
       <View style={styles.ingredientsContainer}>
         {recipeData?.extendedIngredients?.map((ingredient, index) => (
           <View style={styles.ingredientContainer} key={index}>
-            <View style={styles.ingredientImageContainer}>
+            {/* <View style={styles.ingredientImageContainer}>
               <ImageBackground
                 source={{
                   uri: `https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`,
                 }}
                 style={styles.recipeIngredientImage}
               />
-            </View>
+            </View> */}
             <Text style={styles.ingredientTitle}>{ingredient.name}</Text>
-            <Text style={styles.ingredientQuantity}>{ingredient.amount} {ingredient.unit}</Text>
+            <Text style={styles.ingredientQuantity}>
+              {ingredient.amount} {ingredient.unit}
+            </Text>
+          </View>
+        ))}
+      </View>
+      <Text style={styles.recipeIngredientsTitle}>
+        Steps ({recipeInstructions?.length || "N/A"})
+      </Text>
+      <View style={styles.instructionsContainer}>
+        {recipeInstructions?.map((step, index) => (
+          <View style={styles.ingredientContainer} key={index}>
+            <Text style={styles.instructionNumber}>
+              {step.number}. {step.step}
+            </Text>
           </View>
         ))}
       </View>
@@ -95,10 +130,8 @@ export default recipe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: "rgb(29, 28, 34)", //Dark preset
-    backgroundColor: "rgb(255, 255, 255)", //Ligh preset
-    //paddingTop: 57,
-    paddingHorizontal: "10%", // set 10% padding on both sides
+    backgroundColor: "rgb(255, 255, 255)",
+    paddingHorizontal: "10%",
   },
   recipeImage: {
     flex: 1,
@@ -112,20 +145,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   recipeTitle: {
-    //color: "white", //Dark preset
-    color: "black", //Ligh preset
+    color: "black",
     fontWeight: "bold",
     fontSize: 25,
-    //backgroundColor: "red",
     textAlign: "center",
   },
   recipeIngredientsTitle: {
-    //color: "white", //Dark preset
-    color: "black", //Ligh preset
+    color: "black",
     fontWeight: "bold",
     fontSize: 20,
-    //backgroundColor: "red",
     textAlign: "left",
+    marginTop: 20,
   },
   ingredientsContainer: {
     marginTop: 30,
@@ -157,10 +187,29 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "400",
     flex: 1,
+    textTransform: "capitalize",
   },
   ingredientQuantity: {
     fontSize: 13,
     color: "rgb(150, 150, 150)",
     flex: 0,
+  },
+
+  instructionsContainer: {
+    marginTop: 30,
+    height: "auto",
+  },
+  instructionsTitle: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "left",
+    marginBottom: 10,
+  },
+  instructionNumber: {
+    fontSize: 16,
+    fontWeight: "400",
+    marginBottom: 5,
+    height: "auto",
   },
 });

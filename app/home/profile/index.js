@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView, Alert } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { firebase } from "../../../firebase";
@@ -9,9 +9,7 @@ export default function Page() {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    //const userEmail = firebase.auth().currentUser?.email;
 
-    // Define the function that retrieves the saved user ID from AsyncStorage
     const getSavedUserEmail = async () => {
       try {
         const userEmail = await AsyncStorage.getItem("userEmail");
@@ -37,17 +35,14 @@ export default function Page() {
 
   const handleDeleteAccount = async () => {
     try {
-      // Retrieve saved user ID, email, and password from AsyncStorage
       const userID = await AsyncStorage.getItem("userID");
       const userEmail = await AsyncStorage.getItem("userEmail");
       const userPassword = await AsyncStorage.getItem("userPassword");
 
-      // Get user credentials from Firebase using saved email
       const userCredential = await firebase
         .auth()
         .signInWithEmailAndPassword(userEmail, userPassword);
 
-      // Ask the user to confirm that they really want to delete their account
       Alert.alert(
         "Delete Account",
         "Are you sure you want to delete your account?",
@@ -60,7 +55,7 @@ export default function Page() {
             text: "Delete",
             onPress: async () => {
               console.log(userID);
-              // Delete corresponding document from Firestore
+
               async function deleteDocumentAndSubcollection(userID) {
                 const subcollectionRef = firebase
                   .firestore()
@@ -68,13 +63,11 @@ export default function Page() {
                   .doc(userID)
                   .collection("saved-ingredients");
 
-                // Delete all documents in the subcollection
                 const snapshot = await subcollectionRef.get();
                 snapshot.docs.forEach(async (doc) => {
                   await doc.ref.delete();
                 });
 
-                // Delete the main document
                 await firebase
                   .firestore()
                   .collection("users")

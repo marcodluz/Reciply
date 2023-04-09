@@ -1,3 +1,4 @@
+// Import necessary components and libraries
 import React, { useState, useEffect } from "react";
 import {
   Text,
@@ -12,13 +13,22 @@ import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AntDesign } from "@expo/vector-icons";
 
+// Define the Search Recipes component
 const searchRecipes = () => {
+
+  // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
+  // Define state variables to store the recipes
   const [recipes, setRecipes] = useState([]);
+
+  // Get the ingredients from the previous screen
   const { ingredients } = useSearchParams();
+
+  // Load the spoonacular api key
   const api_key = config.spoonacular_api_key;
 
+  // Define a function to handle the recipe search
   const handleSearch = async () => {
     try {
       console.log("Searching for recipes with: " + ingredients);
@@ -28,9 +38,12 @@ const searchRecipes = () => {
       const data = await response.json();
       setRecipes(data);
 
+      // Store the recipes in AsyncStorage
       await AsyncStorage.setItem("recipes", JSON.stringify(data));
 
       if (ingredients) {
+
+        // Store the ingredients in AsyncStorage
         await AsyncStorage.setItem("ingredients", ingredients);
       }
     } catch (error) {
@@ -51,9 +64,11 @@ const searchRecipes = () => {
     getRecipes();
   }, [ingredients]);
 
+  // Define a function to handle the recipe selection
   const handleRecipeSelect = (recipeID) => {
-    // Navigate to detail screen with recipe data
     console.log("RecipeID: " + recipeID);
+
+    // Navigate to the recipe screen
     router.replace("/home/recipes/recipe?recipeID=" + recipeID);
   };
 
@@ -68,8 +83,8 @@ const searchRecipes = () => {
           },
           headerTransparent: false,
           headerStyle: {
-            backgroundColor: "white", // set header background to transparent
-            elevation: 0, // remove elevation/shadow from header
+            backgroundColor: "white",
+            elevation: 0,
             borderBottomWidth: 0,
             borderBottomColor: "transparent",
           },
@@ -80,7 +95,7 @@ const searchRecipes = () => {
               color="lightgrey"
               onPress={() => router.back()}
             />
-          ), // set custom back button icon
+          ),
         }}
       />
       {recipes &&
@@ -116,12 +131,11 @@ export default searchRecipes;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: "rgb(29, 28, 34)", //Dark preset
-    backgroundColor: "rgb(255, 255, 255)", //Ligh preset
+    backgroundColor: "rgb(255, 255, 255)",
   },
   recipeContainer: {
     flex: 1,
-    paddingHorizontal: "5%", // set 10% padding on both sides
+    paddingHorizontal: "5%",
     height: 350,
     marginTop: 30,
   },
@@ -134,8 +148,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderRadius: 25,
     overflow: "hidden",
-    //borderColor: "rgb(230, 230, 230)",
-    //borderWidth: 2,
     marginBottom: 20,
   },
   recipeImageGradient: {
@@ -143,7 +155,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: "60%", // set the height of the gradient to 30%
+    height: "60%",
   },
   recipeTitle: {
     color: "white",

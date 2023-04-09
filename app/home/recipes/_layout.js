@@ -5,8 +5,8 @@ export default () => {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: "white", // set header background to transparent
-          elevation: 0, // remove elevation/shadow from header
+          backgroundColor: "white",
+          elevation: 0,
           borderBottomWidth: 0,
           backgroundColor: "#fff",
         },
@@ -22,7 +22,7 @@ export default () => {
             color: "black",
           },
           headerStyle: {
-            marginBottom: 10, // set your desired margin bottom here
+            marginBottom: 10,
           },
         }}
         //options={{ headerShown: false }}
