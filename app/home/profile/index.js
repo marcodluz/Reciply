@@ -1,3 +1,4 @@
+// Import necessary components and libraries
 import { View, Text, TouchableOpacity, ScrollView, Alert } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -5,9 +6,13 @@ import { Link, useRouter } from "expo-router";
 import { firebase } from "../../../firebase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Define and export the Prfile component
 export default function Page() {
+
+  // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
+  // Define a function to handle the user's sign out
   const handleSignOut = async () => {
 
     const getSavedUserEmail = async () => {
@@ -33,6 +38,7 @@ export default function Page() {
       .catch((error) => alert(error.message));
   };
 
+  // Define a function to handle the user's account deletion
   const handleDeleteAccount = async () => {
     try {
       const userID = await AsyncStorage.getItem("userID");

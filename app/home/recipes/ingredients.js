@@ -1,3 +1,4 @@
+// Import necessary components and libraries
 import {
   StyleSheet,
   View,
@@ -12,19 +13,24 @@ import { firebase } from "../../../firebase";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const panel = () => {
+// Define the Ingredients component
+const ingredients = () => {
+
+  // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
   const scrollViewRef = useRef(null);
   const [submitButtonVisible, setSubmitButtonVisible] = useState(false);
   const buttonRefs = useRef([]);
 
+  // Get the user ID from the local storage
   AsyncStorage.getItem("userID").then((userID) => {
     if (userID) {
-      console.log(userID);
+      //console.log(userID);
     }
   });
 
+  // Get the user ID from the local storage
   const getSavedUserId = async () => {
     try {
       const userId = await AsyncStorage.getItem("userID");
@@ -35,6 +41,7 @@ const panel = () => {
     }
   };
 
+  // Define a function to get the application ingredients
   const [ingredients, setIngredients] = useState([]);
   const ingredientRef = firebase.firestore().collection("ingredients");
   useEffect(() => {
@@ -57,6 +64,7 @@ const panel = () => {
     };
   }, []);
 
+  // Define a function to organize the ingredients per category
   const ingredientsByCategory = ingredients.reduce((acc, ingredient) => {
     const categoryName = ingredient.category;
 
@@ -71,6 +79,7 @@ const panel = () => {
     return acc;
   }, {});
 
+  // Define a function to get the user's saved ingredients
   const [savedIngredients, setSavedIngredients] = useState([]);
   useEffect(() => {
     const getSavedIngredients = async () => {
@@ -112,6 +121,7 @@ const panel = () => {
     getSavedIngredients();
   }, []);
 
+  // Define a function to handle the ingredient add click
   const handleIngredientClick = async (ingredientId) => {
     const ingredient = ingredients.find(
       (ingredient) => ingredient.id === ingredientId
@@ -140,6 +150,7 @@ const panel = () => {
     }
   };
 
+  // Define a function to handle the ingredient remove click
   const handleRemoveIngredientClick = async (savedIngredientId) => {
     const userId = await getSavedUserId();
     if (userId) {
@@ -161,6 +172,7 @@ const panel = () => {
     }
   };
 
+  // Define a function to handle ingredient button
   function IngredientButton({ savedIngredient }) {
     const [ingredientData, setIngredientData] = useState(null);
 
@@ -212,6 +224,7 @@ const panel = () => {
   // Get the saved ingredients into a string joined by commas
   const ingredientsString = savedIngredients.map((item) => item.name).join(",");
 
+  // Render the Ingredients component
   return (
     <View style={styles.container}>
       <ScrollView
@@ -388,4 +401,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default panel;
+export default ingredients;

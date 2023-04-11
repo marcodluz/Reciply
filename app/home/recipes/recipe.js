@@ -1,3 +1,4 @@
+// Import necessary components and libraries
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -11,16 +12,23 @@ import { AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import config from "../../../secrets";
 
+// Define the  Recipe component
 const recipe = () => {
+
+  // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
+  // Load the spoonacular api key
   const api_key = config.spoonacular_api_key;
 
+  // Get the recipe ID from the previous screen
   const { recipeID } = useSearchParams();
 
+  // Define state variables to store the recipe ingredients and instructions
   const [recipeData, setRecipeData] = useState(null);
   const [recipeInstructions, setRecipeInstructions] = useState([]);
 
+  // Define a function to pull the recipe ingredients from the Spoonacular API
   useEffect(() => {
     console.log("Loading recipeID: " + recipeID);
     const fetchRecipe = async () => {
@@ -34,6 +42,7 @@ const recipe = () => {
     fetchRecipe();
   }, []);
 
+  // Define a function to pull the recipe instructions from the Spoonacular API
   useEffect(() => {
     console.log("Loading Instructions recipeID: " + recipeID);
     const fetchRecipeInstructions = async () => {
@@ -48,8 +57,10 @@ const recipe = () => {
     fetchRecipeInstructions();
   }, []);
 
+  // Render the Recipe component
   return (
     <ScrollView style={styles.container}>
+      {/* Define the header for the Recipe's screen */}
       <Stack.Screen
         options={{
           title: recipeData?.title || `${recipeID}`,
@@ -114,7 +125,7 @@ const recipe = () => {
       </Text>
       <View style={styles.instructionsContainer}>
         {recipeInstructions?.map((step, index) => (
-          <View style={styles.ingredientContainer} key={index}>
+          <View style={styles.instructionContainer} key={index}>
             <Text style={styles.instructionNumber}>
               {step.number}. {step.step}
             </Text>
@@ -199,6 +210,17 @@ const styles = StyleSheet.create({
     marginTop: 30,
     height: "auto",
   },
+  instructionContainer: {
+    backgroundColor: "rgb(245, 245, 245)",
+    minHeight: 70,
+    height: "auto",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20,
+  }, 
   instructionsTitle: {
     color: "black",
     fontWeight: "bold",
