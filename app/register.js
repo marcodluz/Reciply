@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(255, 255, 255)",
     borderColor: "rgb(200, 200, 200)",
     borderWidth: 1,
-    color: "blackasd",
+    color: "black",
     minWidth: "100%",
   },
   buttonContainer: {

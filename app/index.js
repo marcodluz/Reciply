@@ -12,9 +12,10 @@ export default function Page() {
   AsyncStorage.getItem("userID").then((userID) => {
     // If the userID exists, redirect the user to the ingredients screen
     if (userID) {
-      router.replace("/home/recipes/ingredients");
       // Print the userID to the console
       console.log(userID);
+
+      router.replace("/home/recipes/ingredients");
     }
   });
 

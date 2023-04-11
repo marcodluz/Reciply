@@ -72,6 +72,7 @@ const searchRecipes = () => {
     router.replace("/home/recipes/recipe?recipeID=" + recipeID);
   };
 
+  // Render the Search Recipes component
   return (
     <ScrollView style={styles.container}>
       <Stack.Screen
