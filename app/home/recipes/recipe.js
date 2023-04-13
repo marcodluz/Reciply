@@ -33,7 +33,7 @@ const recipe = () => {
     console.log("Loading recipeID: " + recipeID);
     const fetchRecipe = async () => {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${api_key}`
+        `https://api.spoonacular.com/recipes/${recipeID}/information\?apiKey=${api_key}`
       );
       const data = await response.json();
       setRecipeData(data);
@@ -47,7 +47,7 @@ const recipe = () => {
     console.log("Loading Instructions recipeID: " + recipeID);
     const fetchRecipeInstructions = async () => {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${api_key}`
+        `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions\?apiKey=${api_key}`
       );
       const data = await response.json();
 
@@ -60,7 +60,7 @@ const recipe = () => {
   // Render the Recipe component
   return (
     <ScrollView style={styles.container}>
-      {/* Define the header for the Recipe's screen */}
+      {/* Define the header for the Recipe screen */}
       <Stack.Screen
         options={{
           title: recipeData?.title || `${recipeID}`,
@@ -70,18 +70,17 @@ const recipe = () => {
           },
           headerTransparent: false,
           headerStyle: {
-            backgroundColor: "white",
+            backgroundColor: "#FFFFFF",
             elevation: 0,
             borderBottomWidth: 0,
-            borderBottomColor: "transparent",
           },
           headerLeft: () => (
             <AntDesign
               name="back"
               size={24}
-              color="lightgrey"
+              color="#D3D3D3"
               onPress={() =>
-                router.replace("/home/recipes/search-recipes?ingredients=" + 1)
+                router.replace("/home/recipes/search-recipes\?ingredients=" + 1)
               }
             />
           ),
@@ -141,7 +140,7 @@ export default recipe;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
     paddingHorizontal: "10%",
   },
   recipeImage: {
@@ -151,18 +150,18 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 25,
     overflow: "hidden",
-    borderColor: "red",
+    borderColor: "#FF0000",
     borderWidth: 2,
     marginBottom: 20,
   },
   recipeTitle: {
-    color: "black",
+    color: "#000000",
     fontWeight: "bold",
     fontSize: 25,
     textAlign: "center",
   },
   recipeIngredientsTitle: {
-    color: "black",
+    color: "#000000",
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "left",
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   ingredientContainer: {
-    backgroundColor: "rgb(245, 245, 245)",
+    backgroundColor: "#F5F5F5",
     height: 70,
     paddingVertical: 7.5,
     paddingLeft: 7.5,
@@ -183,7 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   ingredientImageContainer: {
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     width: 55,
     paddingVertical: 10,
     paddingHorizontal: 10,
@@ -202,7 +201,7 @@ const styles = StyleSheet.create({
   },
   ingredientQuantity: {
     fontSize: 13,
-    color: "rgb(150, 150, 150)",
+    color: "#969696",
     flex: 0,
   },
 
@@ -211,7 +210,7 @@ const styles = StyleSheet.create({
     height: "auto",
   },
   instructionContainer: {
-    backgroundColor: "rgb(245, 245, 245)",
+    backgroundColor: "#F5F5F5",
     minHeight: 70,
     height: "auto",
     paddingVertical: 10,
@@ -222,7 +221,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   }, 
   instructionsTitle: {
-    color: "black",
+    color: "#000000",
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "left",

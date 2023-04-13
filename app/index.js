@@ -22,12 +22,12 @@ export default function Page() {
   // Render the Page component
   return (
     <View style={styles.container}>
-      {/* Define the header for the App's First screen */}
+      {/* Define the header for the App First screen */}
       <Stack.Screen options={{ title: "Home", headerShown: false }} />
       <View style={styles.main}>
         <Image
           source={{
-            uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/splash-image.png?alt=media&token=a376dcdf-93f7-4d36-bb97-2e48fd12accb",
+            uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/splash-image.png\?alt=media&token=a376dcdf-93f7-4d36-bb97-2e48fd12accb",
           }}
           style={styles.splashImage}
         />
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
   },
   main: {
     flex: 1,
@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 55,
     fontWeight: "bold",
-    color: "black",
+    color: "#000000",
   },
   subtitle: {
     fontSize: 19,
-    color: "rgb(55, 55, 55)",
+    color: "#646464",
     marginTop: 10,
   },
   splashImage: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginBottom: 150,
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "#000000",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   buttonText: {
-    color: "white",
+    color: "#FFFFFF",
     fontWeight: "700",
     fontSize: 16,
   },

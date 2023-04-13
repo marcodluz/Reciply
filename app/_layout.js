@@ -5,7 +5,6 @@ export default () => {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: "transparent",
           elevation: 0,
         },
       }}

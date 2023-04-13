@@ -33,7 +33,7 @@ const searchRecipes = () => {
     try {
       console.log("Searching for recipes with: " + ingredients);
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${api_key}&ranking=2&number=2`
+        `https://api.spoonacular.com/recipes/findByIngredients\?ingredients=${ingredients}&apiKey=${api_key}&ranking=2&number=2`
       );
       const data = await response.json();
       setRecipes(data);
@@ -69,7 +69,7 @@ const searchRecipes = () => {
     console.log("RecipeID: " + recipeID);
 
     // Navigate to the recipe screen
-    router.replace("/home/recipes/recipe?recipeID=" + recipeID);
+    router.replace("/home/recipes/recipe\?recipeID=" + recipeID);
   };
 
   // Render the Search Recipes component
@@ -84,16 +84,15 @@ const searchRecipes = () => {
           },
           headerTransparent: false,
           headerStyle: {
-            backgroundColor: "white",
+            backgroundColor: "#FFFFFF",
             elevation: 0,
             borderBottomWidth: 0,
-            borderBottomColor: "transparent",
           },
           headerLeft: () => (
             <AntDesign
               name="back"
               size={24}
-              color="lightgrey"
+              color="#D3D3D3"
               onPress={() => router.back()}
             />
           ),
@@ -111,7 +110,7 @@ const searchRecipes = () => {
               style={styles.recipeImage}
             >
               <LinearGradient
-                colors={["transparent", "rgba(0,0,0,0.7)"]}
+                colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.7)"]}
                 locations={[0, 1]}
                 style={styles.recipeImageGradient}
               />
@@ -132,7 +131,7 @@ export default searchRecipes;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
   },
   recipeContainer: {
     flex: 1,
@@ -159,13 +158,13 @@ const styles = StyleSheet.create({
     height: "60%",
   },
   recipeTitle: {
-    color: "white",
+    color: "#FFFFFF",
     fontWeight: "bold",
     fontSize: 25,
     width: "75%",
   },
   recipeDescription: {
-    color: "white",
+    color: "#FFFFFF",
     fontWeight: "600",
     fontSize: 13,
     marginTop: 10,

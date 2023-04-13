@@ -51,7 +51,7 @@ export default function Page() {
 
       Alert.alert(
         "Delete Account",
-        "Are you sure you want to delete your account?",
+        "Are you sure you want to delete your account\?",
         [
           {
             text: "Cancel",
@@ -128,14 +128,14 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
   },
   scrollViewContainer: {
     flex: 1,
     justifyContent: "flex-end",
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "#000000",
     borderRadius: 5,
     padding: 10,
     alignItems: "center",
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonDelete: {
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     borderRadius: 5,
     padding: 10,
     alignItems: "center",
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "uppercase",
-    color: "white",
+    color: "#FFFFFF",
   },
   textDelete: {
     color: "#FFFFFF",

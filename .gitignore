@@ -14,5 +14,5 @@ web-build/
 .DS_Store
 
 # Project
-#secrets.js
+secrets.js
 builds/

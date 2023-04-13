@@ -6,18 +6,13 @@ export default () => {
   return (
     <Tabs
       screenOptions={{
-        //tabBarActiveTintColor: "white", //Dark preset
-        //tabBarInactiveTintColor: "grey", //Dark preset
-        //tabBarStyle: { backgroundColor: "rgb(24, 23, 30)", borderTopWidth: 0}, //Dark preset
-        //headerStyle: { backgroundColor: "rgb(24, 23, 30)" }, //Dark preset
-
-        tabBarActiveTintColor: "black", //Dark preset
-        tabBarInactiveTintColor: "grey", //Dark preset
+        tabBarActiveTintColor: "#000000", //Dark preset
+        tabBarInactiveTintColor: "#808080", //Dark preset
         tabBarStyle: {
-          backgroundColor: "rgb(255, 255, 255)",
+          backgroundColor: "#FFFFFF",
           borderTopWidth: 0,
         }, //Light preset
-        headerStyle: { backgroundColor: "rgb(255, 255, 255)" }, //Light preset
+        headerStyle: { backgroundColor: "#FFFFFF" }, //Light preset
         headerShown: false,
       }}
     >

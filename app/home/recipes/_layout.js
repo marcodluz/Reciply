@@ -5,10 +5,10 @@ export default () => {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: "white",
+          backgroundColor: "#FFFFFF",
           elevation: 0,
           borderBottomWidth: 0,
-          backgroundColor: "#fff",
+          backgroundColor: "#FFFFFF",
         },
       }}
     >
@@ -19,7 +19,7 @@ export default () => {
           headerTitleStyle: {
             fontSize: 25,
             fontWeight: "600",
-            color: "black",
+            color: "#000000",
           },
           headerStyle: {
             marginBottom: 10,

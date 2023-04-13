@@ -15,7 +15,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#fffff"
+      "backgroundColor": "#FFFFFF"
     },
     "extra": {
       "eas": {
@@ -31,8 +31,10 @@
     "android": {
       "package": "com.marcoluz.reciplyapp",
       "versionCode": 1,
-      "adaptiveIcon": "./assets/images/iconandroid.png",
-      "backgroundColor": "#fffff"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/iconandroid.png",
+        "backgroundColor": "#FFFFFF"
+      }
     }
   }
 }

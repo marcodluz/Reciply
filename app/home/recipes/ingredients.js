@@ -186,7 +186,7 @@ const ingredients = () => {
         if (doc.exists) {
           setIngredientData(doc.data());
         } else {
-          console.log("Ingredient not found!");
+          console.log("Ingredient not found\!");
         }
       });
 
@@ -200,7 +200,7 @@ const ingredients = () => {
     return (
       <TouchableOpacity
         key={savedIngredient.id}
-        style={[styles.button, { backgroundColor: "rgb(245, 245, 245)" }]}
+        style={[styles.button, { backgroundColor: "#F5F5F5" }]}
         onPress={() => handleRemoveIngredientClick(savedIngredient.id)}
       >
         <Image
@@ -240,7 +240,7 @@ const ingredients = () => {
           {savedIngredients.length === 0 ? (
             <Text
               style={{
-                color: "black",
+                color: "#000000",
                 fontSize: 15,
                 fontWeight: "500",
                 textAlign: "center",
@@ -271,11 +271,11 @@ const ingredients = () => {
               width: "100%",
               paddingBottom: 15,
               fontSize: 15,
-              color: "black",
+              color: "#000000",
               fontWeight: "600",
             }}
           >
-            <FontAwesome name="angle-down" size={15} color="black" /> List of
+            <FontAwesome name="angle-down" size={15} color="#000000" /> List of
             ingredients
           </Text>
           {Object.entries(ingredientsByCategory).map(
@@ -284,7 +284,7 @@ const ingredients = () => {
                 key={categoryName}
                 style={{
                   width: "100%",
-                  backgroundColor: "rgb(220, 220, 220)",
+                  backgroundColor: "#DCDCDC",
                   paddingLeft: 10,
                   paddingTop: 14,
                   paddingRight: 10,
@@ -299,7 +299,7 @@ const ingredients = () => {
                 >
                   <Text
                     style={{
-                      color: "black",
+                      color: "#000000",
                       paddingBottom: 5,
                       fontWeight: "500",
                     }}
@@ -315,7 +315,7 @@ const ingredients = () => {
                         style={[
                           styles.button,
                           {
-                            backgroundColor: "rgb(245, 245, 245)",
+                            backgroundColor: "#F5F5F5",
                             paddingTop: 23,
                             paddingBottom: 23,
                           },
@@ -342,7 +342,7 @@ const ingredients = () => {
           style={styles.submitButton}
           onPress={() =>
             router.push(
-              "/home/recipes/search-recipes?ingredients=" + ingredientsString
+              "/home/recipes/search-recipes\?ingredients=" + ingredientsString
             )
           }
         >
@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
   },
   scrollViewContainer: {
     paddingHorizontal: "5%",
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     margin: 2,
   },
   buttonText: {
-    color: "black",
+    color: "#000000",
     fontSize: 12,
     marginTop: 12,
   },
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   submitButtonText: {
-    color: "white",
+    color: "#FFFFFF",
     fontSize: 15,
     fontWeight: "bold",
   },

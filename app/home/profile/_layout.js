@@ -4,8 +4,8 @@ export default () => {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "white" },
-        headerTintColor: "black",
+        headerStyle: { backgroundColor: "#FFFFFF" },
+        headerTintColor: "#000000",
       }}
     >
       <Stack.Screen name="index" options={{ title: "Profile" }} />

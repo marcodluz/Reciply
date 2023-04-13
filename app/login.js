@@ -69,14 +69,13 @@ const login = () => {
           title: "",
           headerTransparent: true,
           headerStyle: {
-            backgroundColor: "transparent",
             elevation: 0,
           },
           headerLeft: () => (
             <AntDesign
               name="back"
               size={24}
-              color="lightgrey"
+              color="#D3D3D3"
               onPress={() => router.push("./")}
             />
           ),
@@ -100,14 +99,14 @@ const login = () => {
             onChangeText={(text) => setEmail(text)}
             autoCapitalize={"none"}
             style={styles.input}
-            placeholderTextColor="rgb(200, 200, 200)"
+            placeholderTextColor="#C8C8C8"
           />
           <TextInput
             placeholder="Password"
             value={password}
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
-            placeholderTextColor="rgb(200, 200, 200)"
+            placeholderTextColor="#C8C8C8"
             secureTextEntry
           />
         </View>
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "rgb(255, 255, 255)",
+    backgroundColor: "#FFFFFF",
   },
   main: {
     flex: 1,
@@ -150,26 +149,26 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "black",
+    color: "#000000",
   },
   subtitle: {
     fontSize: 30,
-    color: "black",
+    color: "#000000",
   },
   inputContainer: {
     alignItems: "center",
     width: "80%",
   },
   input: {
-    backgroundColor: "white",
+    backgroundColor: "#FFFFFF",
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,
     marginTop: 10,
-    backgroundColor: "rgb(255, 255, 255)",
-    borderColor: "rgb(200, 200, 200)",
+    backgroundColor: "#FFFFFF",
+    borderColor: "#C8C8C8",
     borderWidth: 1,
-    color: "black",
+    color: "#000000",
     minWidth: "100%",
   },
   buttonContainer: {
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "#000000",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -187,13 +186,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   buttonOutline: {
-    backgroundColor: "black",
+    backgroundColor: "#000000",
     marginTop: 5,
     borderColor: "#0782F9",
     borderWidth: 2,
   },
   buttonText: {
-    color: "white",
+    color: "#FFFFFF",
     fontWeight: "700",
     fontSize: 16,
   },
@@ -203,10 +202,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   registerText: {
-    color: "rgb(100, 100, 100)",
+    color: "#646464",
   },
   registerLink: {
-    color: "black",
+    color: "#000000",
     fontWeight: "600",
   },
 });
