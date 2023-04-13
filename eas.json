@@ -29,6 +29,9 @@
         "appleId": "marcotdl@hotmail.com",
         "ascAppId": "6446953227",
         "appleTeamId": "3NLJS623ND"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./builds/android/pc-api-4691000493450746484-87-af873b23d672.json"
       }
     }
   }

@@ -93,7 +93,7 @@ export default function Page() {
               // Redirect to login page
               router.replace("../../login");
 
-              console.log("Account deleted successfully!");
+              console.log("Account deleted successfully\!");
             },
             style: "destructive",
           },

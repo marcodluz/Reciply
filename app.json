@@ -28,6 +28,11 @@
     "updates": {
       "url": "https://u.expo.dev/2b3bc6fa-d881-44d0-9476-e592c1a9bc0e"
     },
-    "android": {}
+    "android": {
+      "package": "com.marcoluz.reciplyapp",
+      "versionCode": 1,
+      "adaptiveIcon": "./assets/images/iconandroid.png",
+      "backgroundColor": "#fffff"
+    }
   }
 }
