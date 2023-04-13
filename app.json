@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Reciply",
+    "version": "1.1.0",
+    "slug": "reciply",
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "ios": {
+      "bundleIdentifier": "com.marcoluz.reciplyapp",
+      "buildNumber": "1.0.1"
+    },
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2b3bc6fa-d881-44d0-9476-e592c1a9bc0e"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2b3bc6fa-d881-44d0-9476-e592c1a9bc0e"
+    },
+    "android": {
+      "package": "com.marcoluz.reciplyapp",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/iconandroid.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    }
+  }
+}
