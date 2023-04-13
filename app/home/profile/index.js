@@ -152,6 +152,16 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 0, 0, 0.7)",
     borderWidth: 2,
   },
+  buttonDelete: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 5,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+    borderColor: "rgba(255, 0, 0, 0.7)",
+    borderWidth: 2,
+  },
   text: {
     fontSize: 16,
     fontWeight: "bold",
