@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Reciply",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "slug": "reciply",
     "scheme": "acme",
     "web": {
@@ -9,7 +9,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.marcoluz.reciplyapp",
-      "buildNumber": "1.0.1"
+      "buildNumber": "1.0.0"
     },
     "icon": "./assets/images/icon.png",
     "splash": {
