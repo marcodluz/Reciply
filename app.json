@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Reciply",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "slug": "reciply",
     "scheme": "acme",
     "web": {
