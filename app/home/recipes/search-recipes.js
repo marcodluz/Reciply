@@ -33,7 +33,7 @@ const searchRecipes = () => {
     try {
       console.log("Searching for recipes with: " + ingredients);
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByIngredients\?ingredients=${ingredients}&apiKey=${api_key}&ranking=2&number=2`
+        `https://api.spoonacular.com/recipes/findByIngredients\?ingredients=${ingredients}&apiKey=${api_key}&ranking=2&number=20`
       );
       const data = await response.json();
       setRecipes(data);
