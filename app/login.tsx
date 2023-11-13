@@ -119,7 +119,7 @@ const login = () => {
             secureTextEntry
           />
           <Text style={styles.resetText}>
-            <Link href="register" style={styles.registerLink}>
+            <Link href="reset" style={styles.registerLink}>
               Forgot your password?
             </Link>
           </Text>
