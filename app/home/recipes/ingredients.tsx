@@ -81,24 +81,11 @@ const ingredients = () => {
     };
   }, []);
 
-  // Define a function to organize the ingredients per category
-  const ingredientsByCategory = ingredients.reduce<IngredientsByCategory>(
-    (acc, ingredient) => {
-      const categoryName = ingredient.category;
-
-      if (!acc[categoryName]) {
-        acc[categoryName] = [];
-      }
-
-      acc[categoryName].push(ingredient);
-
-      // Sort each category's ingredients by name
-      acc[categoryName].sort((a, b) => a.name.localeCompare(b.name));
-
-      return acc;
-    },
-    {}
-  );
+  const ingredientsByCategory = ingredients.reduce((acc, ingredient) => {
+    const categoryName = ingredient.category;
+    acc[categoryName] = (acc[categoryName] || []).concat(ingredient);
+    return acc;
+  }, {});
 
   // Define a function to get the user's saved ingredients
   const [savedIngredients, setSavedIngredients] = useState<SavedIngredient[]>(
@@ -238,7 +225,6 @@ const ingredients = () => {
 
   const toggleCategoryVisibility = (categoryName) => {
     setCategoryVisibility((prevVisibility) => ({
-      ...prevVisibility,
       [categoryName]: !prevVisibility[categoryName],
     }));
   };
@@ -316,7 +302,6 @@ const ingredients = () => {
                 }}
               >
                 <TouchableOpacity
-                  style={{}}
                   onPress={() => toggleCategoryVisibility(categoryName)}
                 >
                   <Text
