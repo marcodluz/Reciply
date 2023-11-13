@@ -20,7 +20,8 @@
     "extra": {
       "eas": {
         "projectId": "2b3bc6fa-d881-44d0-9476-e592c1a9bc0e"
-      }
+      },
+      "EXPO_ROUTER_APP_ROOT": "./index.ts"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"

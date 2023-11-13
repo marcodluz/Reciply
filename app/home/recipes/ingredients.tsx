@@ -13,14 +13,30 @@ import { firebase } from "../../../firebase";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Define a type for the ingredient
+type Ingredient = {
+  id: string;
+  name: string;
+  image: string;
+  category: string;
+};
+
+type IngredientsByCategory = {
+  [category: string]: Ingredient[]; // This is an index signature
+};
+
+type SavedIngredient = {
+  id: string;
+  name: string;
+  addedAt: firebase.firestore.Timestamp; // Use the appropriate type for your 'addedAt' field
+};
+
 // Define the Ingredients component
 const ingredients = () => {
-
   // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
   const scrollViewRef = useRef(null);
-  const [submitButtonVisible, setSubmitButtonVisible] = useState(false);
   const buttonRefs = useRef([]);
 
   // Get the user ID from the local storage
@@ -42,21 +58,22 @@ const ingredients = () => {
   };
 
   // Define a function to get the application ingredients
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const ingredientRef = firebase.firestore().collection("ingredients");
   useEffect(() => {
     const unsubscribe = ingredientRef.onSnapshot((querySnapshot) => {
-      const ingredients = [];
+      // Define a new array with the Ingredient type
+      const newIngredients: Ingredient[] = [];
       querySnapshot.forEach((doc) => {
         const { name, image, category } = doc.data();
-        ingredients.push({
+        newIngredients.push({
           id: doc.id,
           name,
           image,
           category,
         });
       });
-      setIngredients(ingredients);
+      setIngredients(newIngredients);
     });
 
     return () => {
@@ -65,22 +82,30 @@ const ingredients = () => {
   }, []);
 
   // Define a function to organize the ingredients per category
-  const ingredientsByCategory = ingredients.reduce((acc, ingredient) => {
-    const categoryName = ingredient.category;
+  const ingredientsByCategory = ingredients.reduce<IngredientsByCategory>(
+    (acc, ingredient) => {
+      const categoryName = ingredient.category;
 
-    if (!acc[categoryName]) {
-      acc[categoryName] = [];
-    }
+      if (!acc[categoryName]) {
+        acc[categoryName] = [];
+      }
 
-    acc[categoryName].push(ingredient);
+      acc[categoryName].push(ingredient);
 
-    acc[categoryName].sort((a, b) => a.name.localeCompare(b.name));
+      // Sort each category's ingredients by name
+      acc[categoryName].sort((a, b) => a.name.localeCompare(b.name));
 
-    return acc;
-  }, {});
+      return acc;
+    },
+    {}
+  );
 
   // Define a function to get the user's saved ingredients
-  const [savedIngredients, setSavedIngredients] = useState([]);
+  const [savedIngredients, setSavedIngredients] = useState<SavedIngredient[]>(
+    []
+  );
+  const [submitButtonVisible, setSubmitButtonVisible] = useState(false);
+
   useEffect(() => {
     const getSavedIngredients = async () => {
       const userId = await getSavedUserId();
@@ -94,22 +119,19 @@ const ingredients = () => {
         const unsubscribe = savedIngredientsRef
           .orderBy("addedAt", "asc")
           .onSnapshot((querySnapshot) => {
-            const savedIngredients = [];
+            // Use a local variable with an explicit type
+            const newSavedIngredients: SavedIngredient[] = [];
             querySnapshot.forEach((doc) => {
               const { name, addedAt } = doc.data();
-              savedIngredients.push({
+              newSavedIngredients.push({
                 id: doc.id,
                 name,
-                addedAt,
+                addedAt, // Make sure 'addedAt' is of the type you've declared, or convert it to that type
               });
             });
-            setSavedIngredients(savedIngredients);
+            setSavedIngredients(newSavedIngredients);
 
-            if (savedIngredients.length > 2) {
-              setSubmitButtonVisible(true);
-            } else {
-              setSubmitButtonVisible(false);
-            }
+            setSubmitButtonVisible(newSavedIngredients.length > 2);
           });
 
         return () => {
@@ -122,11 +144,11 @@ const ingredients = () => {
   }, []);
 
   // Define a function to handle the ingredient add click
-  const handleIngredientClick = async (ingredientId) => {
+  const handleIngredientClick = async (ingredientId: string) => {
     const ingredient = ingredients.find(
       (ingredient) => ingredient.id === ingredientId
     );
-    const ingredientName = ingredient.name;
+    const ingredientName = ingredient?.name;
     const userId = await getSavedUserId();
     if (userId) {
       const savedIngredientsRef = firebase
@@ -151,7 +173,7 @@ const ingredients = () => {
   };
 
   // Define a function to handle the ingredient remove click
-  const handleRemoveIngredientClick = async (savedIngredientId) => {
+  const handleRemoveIngredientClick = async (savedIngredientId: string) => {
     const userId = await getSavedUserId();
     if (userId) {
       const savedIngredientsRef = firebase
@@ -186,7 +208,7 @@ const ingredients = () => {
         if (doc.exists) {
           setIngredientData(doc.data());
         } else {
-          console.log("Ingredient not found\!");
+          console.log("Ingredient not found!");
         }
       });
 
@@ -342,7 +364,7 @@ const ingredients = () => {
           style={styles.submitButton}
           onPress={() =>
             router.push(
-              "/home/recipes/search-recipes\?ingredients=" + ingredientsString
+              "/home/recipes/search-recipes?ingredients=" + ingredientsString
             )
           }
         >

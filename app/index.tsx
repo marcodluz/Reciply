@@ -2,6 +2,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Stack, useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import React from "react";
 
 // Export the component Page
 export default function Page() {
@@ -27,7 +28,7 @@ export default function Page() {
       <View style={styles.main}>
         <Image
           source={{
-            uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/splash-image.png\?alt=media&token=a376dcdf-93f7-4d36-bb97-2e48fd12accb",
+            uri: "https://firebasestorage.googleapis.com/v0/b/recipeapp-3914c.appspot.com/o/splash-image.png?alt=media&token=a376dcdf-93f7-4d36-bb97-2e48fd12accb",
           }}
           style={styles.splashImage}
         />

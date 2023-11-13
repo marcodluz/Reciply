@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import config from './secrets';
+import config from "./secrets";
 
 const firebaseConfig = {
   apiKey: config.apiKey,

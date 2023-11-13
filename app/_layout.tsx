@@ -5,7 +5,7 @@ export default () => {
     <Stack
       screenOptions={{
         headerStyle: {
-          elevation: 0,
+          //elevation: 0,
         },
       }}
     >

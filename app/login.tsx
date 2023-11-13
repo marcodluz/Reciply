@@ -13,9 +13,8 @@ import { firebase } from "../firebase";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// Define the Register component
-const register = () => {
-  
+// Define Login functional component
+const login = () => {
   // Use the useRouter hook from expo-router to navigate between screens
   const router = useRouter();
 
@@ -24,70 +23,80 @@ const register = () => {
   const [password, setPassword] = useState("");
 
   // Create a reference to the email input field
-  const emailRef = useRef(null);
+  const emailRef = useRef<TextInput>(null);
 
   // Use the useEffect hook to focus on the email input field after 600ms
   useEffect(() => {
     const timer = setTimeout(() => {
-      emailRef.current.focus();
+      // Check if emailRef.current is not null before calling focus
+      if (emailRef.current) {
+        emailRef.current.focus();
+      }
     }, 600);
 
     // Return a cleanup function to clear the timer if the component unmounts before the timer is complete
     return () => clearTimeout(timer);
   }, []);
 
-  // Define a function to handle user sign-up
-  const handleSignUp = () => {
+  // Define a function to handle user login
+  const handleLogin = async () => {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered in with: ", user.email);
+      .signInWithEmailAndPassword(email, password)
+      .then(async (userCredentials) => {
+        // Add a null check for user
+        if (userCredentials.user) {
+          const user = userCredentials.user;
+          console.log("Logged in with: ", user.email);
 
-        // Store the user ID, email, and password in AsyncStorage
-        AsyncStorage.setItem("userID", user.uid);
-        AsyncStorage.setItem("userEmail", user.email);
-        AsyncStorage.setItem("userPassword", password);
+          // Store the user ID, email, and password in AsyncStorage
+          await AsyncStorage.setItem("userID", user.uid!); // await is used here for AsyncStorage.setItem
+          await AsyncStorage.setItem("userEmail", user.email!);
+          await AsyncStorage.setItem("userPassword", password);
 
-        // Navigate to the home screen
-        router.replace("home/recipes/ingredients");
+          // Navigate to the home screen
+          router.replace("home/recipes/ingredients");
+        } else {
+          // Handle the case where user is null
+          console.error("No user found after sign-in");
+          // You may want to throw an error or set an error state here
+        }
       })
       .catch((error) => alert(error.message));
   };
 
-  // Render the Register component
+  // Render the Login component
   return (
     <KeyboardAvoidingView
       style={styles.container}
       behavior="padding"
       keyboardVerticalOffset={-50}
     >
-      {/* Define the header for the Register screen */}
+      {/* Define the header for the Login screen */}
       <Stack.Screen
         options={{
           title: "",
           headerTransparent: true,
           headerStyle: {
-            elevation: 0,
+            //elevation: 0,
           },
           headerLeft: () => (
             <AntDesign
               name="back"
               size={24}
               color="#D3D3D3"
-              onPress={() => router.back()}
+              onPress={() => router.push("./")}
             />
           ),
         }}
       />
 
-      {/* Define the main content of the Register screen */}
+      {/* Define the main content of the Login screen */}
       <View style={styles.main}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Create a new account.</Text>
-          <Text style={styles.subtitle}>Explore thousands of</Text>
-          <Text style={styles.subtitle}>world-wide recipes.</Text>
+          <Text style={styles.title}>Let's sign you in.</Text>
+          <Text style={styles.subtitle}>Welcome back.</Text>
+          <Text style={styles.subtitle}>You've been missed!</Text>
         </View>
 
         {/* Define the email and password input fields */}
@@ -109,26 +118,31 @@ const register = () => {
             placeholderTextColor="#C8C8C8"
             secureTextEntry
           />
-        </View>
-
-        {/* Define the container to hold the "Register" button and the "Login" link */}
-        <View style={styles.buttonContainer}>
-          <Text style={styles.registerText}>
-            Already have an account?{" "}
-            <Link href="login" style={styles.registerLink}>
-              Login
+          <Text style={styles.resetText}>
+            <Link href="register" style={styles.registerLink}>
+              Forgot your password?
             </Link>
           </Text>
-          <TouchableOpacity onPress={handleSignUp} style={styles.button}>
-            <Text style={styles.buttonText}>Register</Text>
+        </View>
+
+        {/* Define the container to hold the "Login" button and the "Register" link */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleLogin} style={styles.button}>
+            <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
+          <Text style={styles.registerText}>
+            Don't have an account?{" "}
+            <Link href="register" style={styles.registerLink}>
+              Register
+            </Link>
+          </Text>
         </View>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default register;
+export default login;
 
 const styles = StyleSheet.create({
   container: {
@@ -160,11 +174,11 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   input: {
+    backgroundColor: "#FFFFFF",
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,
     marginTop: 10,
-    backgroundColor: "#FFFFFF",
     borderColor: "#C8C8C8",
     borderWidth: 1,
     color: "#000000",
@@ -182,7 +196,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     minWidth: "100%",
-    marginTop: 20,
+    marginBottom: 20,
   },
   buttonOutline: {
     backgroundColor: "#000000",
@@ -199,6 +213,9 @@ const styles = StyleSheet.create({
     color: "#0782F9",
     fontWeight: "700",
     fontSize: 16,
+  },
+  resetText: {
+    marginTop: 10,
   },
   registerText: {
     color: "#646464",
