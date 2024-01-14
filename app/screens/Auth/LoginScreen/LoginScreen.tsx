@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter, Stack, Link } from "expo-router";
-import { firebase } from "../firebase";
+import { firebase } from "../../../../firebase";
 import { AntDesign } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -55,7 +55,7 @@ const login = () => {
           await AsyncStorage.setItem("userPassword", password);
 
           // Navigate to the home screen
-          router.replace("home/recipes/ingredients");
+          router.replace("pages/recipes/ingredients");
         } else {
           // Handle the case where user is null
           console.error("No user found after sign-in");

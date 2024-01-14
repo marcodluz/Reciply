@@ -130,35 +130,6 @@ const ingredients = () => {
     getSavedIngredients();
   }, []);
 
-  // Define a function to handle the ingredient add click
-  const handleIngredientClick = async (ingredientId: string) => {
-    const ingredient = ingredients.find(
-      (ingredient) => ingredient.id === ingredientId
-    );
-    const ingredientName = ingredient?.name;
-    const userId = await getSavedUserId();
-    if (userId) {
-      const savedIngredientsRef = firebase
-        .firestore()
-        .collection("users")
-        .doc(userId)
-        .collection("saved-ingredients");
-
-      savedIngredientsRef
-        .doc(ingredientId)
-        .set({
-          name: ingredientName,
-          addedAt: new Date().toLocaleString(),
-        })
-        .then(() => {
-          console.log("+1 " + ingredientId);
-        })
-        .catch((error) => {
-          console.error("Error adding ingredient:", error);
-        });
-    }
-  };
-
   // Define a function to handle the ingredient remove click
   const handleRemoveIngredientClick = async (savedIngredientId: string) => {
     const userId = await getSavedUserId();

@@ -53,7 +53,7 @@ const register = () => {
           AsyncStorage.setItem("userPassword", password);
 
           // Navigate to the home screen
-          router.replace("home/recipes/ingredients");
+          router.replace("pages/recipes/ingredients");
         } else {
           // Handle the case where user is null
           console.error("No user found after sign-in");
