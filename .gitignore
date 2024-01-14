@@ -16,3 +16,4 @@ web-build/
 # Project
 secrets.js
 builds/
+coverage/
